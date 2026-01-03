@@ -1,0 +1,71 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 35,
+    "spacing": 10,
+    "reload_style_on_change": true,
+    
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "custom/cpu-temp", "network", "pulseaudio", "battery", "custom/power"],
+    
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-click": "activate",
+        "all-outputs": true,
+        "persistent-workspaces": {
+          "*": [1, 2, 3, 4]
+        }
+    },
+
+    "custom/cpu-temp": {
+        "exec": "sensors | grep 'Tctl:' | awk '{print int($2)}' | tr -d '+°C'",
+        "format": "CPU {}°C",
+        "interval": 5
+    },
+
+    "temperature": {
+        "thermal-zone": 3,  // Change this number
+        "critical-threshold": 80,
+        "format": "CPU {temperatureC}°C",
+        "format-critical": "CPU {temperatureC}°C"
+    },
+
+    "battery": {
+	    "states":{
+		    "good": 100,
+		    "warning": 80,
+		    "critical": 30
+	    }
+    },
+
+    "network": {
+        "format-wifi": "󰤨 {ipaddr}",
+        "format-ethernet": "󰈀 {ipaddr}",
+        "format-disconnected": "󰤮 disconnected",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}",
+        "tooltip-format-ethernet": "{ipaddr}/{cidr}",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "nm-connection-editor"
+    },
+    
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟 {volume}%",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol"
+    },
+    
+    "clock": {
+        "format": "   {:%b %d  %I:%M %p} ",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "wlogout"
+    }
+}
