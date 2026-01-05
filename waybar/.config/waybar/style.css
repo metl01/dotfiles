@@ -13,12 +13,12 @@ window#waybar {
 }
 
 #workspaces {
-  margin: 0 8px;
+  margin: 0 4px;
   padding: 0;
 }
 
 #workspaces button {
-  padding: 0px 6px;
+  padding: 0px 5px;
   margin: 6px 1px;
   border-radius: 20%;
   background-color: inherit;
@@ -70,7 +70,7 @@ window#waybar {
     padding: 4px 12px;
     background-color: @yellow;
     color: @nord0;
-    margin: 6px 0;
+    margin: 6px 4px 6px 0px;
     border-radius: 10px;
     transition: all 0.3s ease;
 }
@@ -98,18 +98,5 @@ window#waybar {
     margin: 6px 0;
     background-color: @nord9;
     border-radius: 10px;
-}
-
-#custom-power {
-    padding: 4px 12px;
-    background-color: @red;
-    color: @nord0;
-    margin: 6px 8px 8px 0;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-}
-
-#custom-power:hover {
-    background-color: shade(@red, 1.1);
 }
 

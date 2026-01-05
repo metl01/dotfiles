@@ -6,7 +6,7 @@
     
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "custom/cpu-temp", "network", "pulseaudio", "battery", "custom/power"],
+    "modules-right": ["tray", "custom/cpu-temp", "network", "pulseaudio", "battery"],
     
     "hyprland/workspaces": {
         "format": "{name}",
@@ -60,11 +60,5 @@
     "clock": {
         "format": " {:%b %d  %I:%M %p} ",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
-    
-    "custom/power": {
-        "format": "⏻",
-        "tooltip": false,
-        "on-click": "wlogout"
     }
 }
