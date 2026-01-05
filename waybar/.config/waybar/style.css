@@ -1,4 +1,4 @@
-@import "mocha.css";
+@import "nord.css";
 @import "battery.css";
 * {
     font-family: "AdwaitaMono", sans-serif;
@@ -9,7 +9,7 @@
 }
 
 window#waybar {
-    background-color: shade(@base, 0.9);
+    background-color: shade(@nord0, 0.9);
 }
 
 #workspaces {
@@ -22,41 +22,41 @@ window#waybar {
   margin: 8px 1px;
   border-radius: 20%;
   background-color: inherit;
-  color: @lavender;
+  color: @nord7;
   transition: 0.3s ease;
 }
 
 #workspaces button.active {
-  background-color: @pink;  
-  color: @base;
+  background-color: @nord7;  
+  color: @nord0;
 }
 
 #workspaces button:hover {
-  background-color: @lavender;
-  color: @base;
+  background-color: shade(@nord7, 0.8);
+  color: @nord0;
 }
 
 #window {
-    color: @lavender;
+    color: @nord7;
 }
 
 #custom-cpu-temp {
   padding: 4px 16px;
-  background-color: @lavender;
-  color: @base;
+  background-color: @orange;
+  color: @nord0;
   margin: 8px 0;
   border-radius: 10px;
   transition: all 0.3s ease;
 }
 
 #custom-cpu-temp:hover {
-  background-color: shade(@lavender, 1.1);
+  background-color: shade(@orange, 1.1);
 }
 
 #network {
     padding: 4px 12px;
     background-color: @green;
-    color: @base;
+    color: @nord0;
     margin: 8px 0;
     border-radius: 10px;
     transition: all 0.3s ease;
@@ -69,7 +69,7 @@ window#waybar {
 #pulseaudio {
     padding: 4px 12px;
     background-color: @yellow;
-    color: @base;
+    color: @nord0;
     margin: 8px 0;
     border-radius: 10px;
     transition: all 0.3s ease;
@@ -82,7 +82,7 @@ window#waybar {
 #clock {
     padding: 4px 12px;
     background-color: inherit;
-    color: @subtext1;
+    color: @nord4;
     margin: 8px 0;
     border-radius: 10px;
     transition: all 0.3s ease;
@@ -90,7 +90,7 @@ window#waybar {
 }
 
 #clock:hover {
-    background-color: @surface0;
+    background-color: @nord1;
 }
 
 #tray { 
@@ -103,7 +103,7 @@ window#waybar {
 #custom-power {
     padding: 4px 12px;
     background-color: @red;
-    color: @base;
+    color: @nord0;
     margin: 8px 8px 8px 0;
     border-radius: 10px;
     transition: all 0.3s ease;
