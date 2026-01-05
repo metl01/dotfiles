@@ -2,7 +2,7 @@
 @import "battery.css";
 * {
     font-family: "AdwaitaMono", sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     border: none;
     border-radius: 0;
@@ -18,8 +18,8 @@ window#waybar {
 }
 
 #workspaces button {
-  padding: 0px 10px;
-  margin: 8px 1px;
+  padding: 0px 6px;
+  margin: 6px 1px;
   border-radius: 20%;
   background-color: inherit;
   color: @nord7;
@@ -44,7 +44,7 @@ window#waybar {
   padding: 4px 16px;
   background-color: @orange;
   color: @nord0;
-  margin: 8px 0;
+  margin: 6px 0;
   border-radius: 10px;
   transition: all 0.3s ease;
 }
@@ -57,7 +57,7 @@ window#waybar {
     padding: 4px 12px;
     background-color: @green;
     color: @nord0;
-    margin: 8px 0;
+    margin: 6px 0;
     border-radius: 10px;
     transition: all 0.3s ease;
 }
@@ -70,7 +70,7 @@ window#waybar {
     padding: 4px 12px;
     background-color: @yellow;
     color: @nord0;
-    margin: 8px 0;
+    margin: 6px 0;
     border-radius: 10px;
     transition: all 0.3s ease;
 }
@@ -83,7 +83,7 @@ window#waybar {
     padding: 4px 12px;
     background-color: inherit;
     color: @nord4;
-    margin: 8px 0;
+    margin: 6px 0;
     border-radius: 10px;
     transition: all 0.3s ease;
     font-size: 14px;
@@ -95,7 +95,7 @@ window#waybar {
 
 #tray { 
     padding: 4px 12px;
-    margin: 8px 0;
+    margin: 6px 0;
     background-color: @nord9;
     border-radius: 10px;
 }
@@ -104,7 +104,7 @@ window#waybar {
     padding: 4px 12px;
     background-color: @red;
     color: @nord0;
-    margin: 8px 8px 8px 0;
+    margin: 6px 8px 8px 0;
     border-radius: 10px;
     transition: all 0.3s ease;
 }
