@@ -39,8 +39,8 @@
     },
 
     "network": {
-        "format-wifi": "󰤨 {ipaddr}",
-        "format-ethernet": "󰈀 {ipaddr}",
+        "format-wifi": "󰤨 ↓{bandwidthDownBytes} / ↑{bandwidthUpBytes}",
+        "format-ethernet": "󰈀 ↓{bandwidthDownBytes} / ↑{bandwidthUpBytes}",
         "format-disconnected": "󰤮 disconnected",
         "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}",
         "tooltip-format-ethernet": "{ipaddr}/{cidr}",
@@ -58,7 +58,7 @@
     },
     
     "clock": {
-        "format": "   {:%b %d  %I:%M %p} ",
+        "format": " {:%b %d  %I:%M %p} ",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     
