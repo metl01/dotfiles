@@ -2,24 +2,25 @@
 @import "battery.css";
 * {
     font-family: "AdwaitaMono", sans-serif;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 700;
-    border: none;
-    border-radius: 0;
 }
 
 window#waybar {
-    background-color: shade(@nord0, 0.9);
+    background-color: alpha(@nord1, 0.9);
+    border-radius: 8px;
+    border: 2px solid @nord7;
 }
 
 #workspaces {
-  margin: 0 4px;
+  margin-left: 8px;
+  margin: 6px;
   padding: 0;
 }
 
 #workspaces button {
-  padding: 0px 5px;
-  margin: 6px 1px;
+  padding: 0px 6px;
+  margin-right: 3px;
   border-radius: 20%;
   background-color: inherit;
   color: @nord7;
@@ -40,43 +41,28 @@ window#waybar {
     color: @nord7;
 }
 
-#custom-cpu-temp {
-  padding: 4px 16px;
-  background-color: @orange;
-  color: @nord0;
-  margin: 6px 0;
-  border-radius: 10px;
-  transition: all 0.3s ease;
+#temperature {
+  color: @yellow;
+}
+#temperature.critical {
+	color: @red
 }
 
-#custom-cpu-temp:hover {
-  background-color: shade(@orange, 1.1);
+#custom-gpu-temp {
+	color: @orange;
 }
+
 
 #network {
-    padding: 4px 12px;
-    background-color: @green;
-    color: @nord0;
-    margin: 6px 0;
-    border-radius: 10px;
+    padding: 0px 0px;
+    color: @green;
+    margin-right: 14px;
     transition: all 0.3s ease;
-}
-
-#network:hover {
-    background-color: shade(@green, 1.1);
 }
 
 #pulseaudio {
-    padding: 4px 12px;
-    background-color: @yellow;
-    color: @nord0;
-    margin: 6px 4px 6px 0px;
-    border-radius: 10px;
+    color: @lavender;
     transition: all 0.3s ease;
-}
-
-#pulseaudio:hover {
-    background-color: shade(@yellow, 1.1);
 }
 
 #clock {
@@ -94,9 +80,11 @@ window#waybar {
 }
 
 #tray { 
-    padding: 4px 12px;
-    margin: 6px 0;
-    background-color: @nord9;
-    border-radius: 10px;
+    padding: 4px 0px;
+    margin: 6px 0px;
+    color: @nord4;
 }
 
+#custom-seperator {
+    color: @nord4;
+}

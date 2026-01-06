@@ -3,10 +3,13 @@
     "position": "top",
     "spacing": 10,
     "reload_style_on_change": true,
+    "margin-top": 8,
+    "margin-left": 8,
+    "margin-right": 8,
     
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "custom/cpu-temp", "network", "pulseaudio", "battery"],
+    "modules-right": ["tray", "custom/seperator", "custom/gpu-temp", "temperature", "custom/seperator", "pulseaudio", "network", "battery"],
     
     "hyprland/workspaces": {
         "format": "{name}",
@@ -17,17 +20,26 @@
         }
     },
 
-    "custom/cpu-temp": {
-        "exec": "sensors | grep 'Tctl:' | awk '{print int($2)}' | tr -d '+°C'",
-        "format": "CPU {}°C",
-        "interval": 5
+    "custom/seperator": {
+	"format": "|"
     },
 
     "temperature": {
-        "thermal-zone": 3,  // Change this number
-        "critical-threshold": 80,
-        "format": "CPU {temperatureC}°C",
-        "format-critical": "CPU {temperatureC}°C"
+        //"exec": "sensors | grep 'Tctl:' | awk '{print int($2)}' | tr -d '+°C'",
+	"hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input",
+	"critical-threshold": 75,
+        "format": "{icon} {temperatureC}°C",
+	"format-icons": ["", "", ""],
+        "tooltip-format": "CPU {temperatureC}°C"
+    },
+       "custom/gpu-temp": {
+      //  "exec": "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits",  // For NVIDIA
+        "exec": "cat /sys/class/drm/card1/device/hwmon/hwmon*/temp2_input | awk '{print $1/1000}'",  // For AMD
+        "format": "󰍹 {}°C",
+        "tooltip-format": "GPU {}°C",
+        "interval": 5,
+        "cursor": true,
+        "on-click": "kitty btop"
     },
 
     "battery": {
@@ -39,18 +51,17 @@
     },
 
     "network": {
-        "format-wifi": "󰤨 ↓{bandwidthDownBytes} / ↑{bandwidthUpBytes}",
-        "format-ethernet": "󰈀 ↓{bandwidthDownBytes} / ↑{bandwidthUpBytes}",
-        "format-disconnected": "󰤮 disconnected",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}",
-        "tooltip-format-ethernet": "{ipaddr}/{cidr}",
-        "tooltip-format-disconnected": "Disconnected",
-        "on-click": "nm-connection-editor"
+        "format-wifi": "󰤨",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰤮",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}\n↓{bandwidthDownBytes} ↑{bandwidthUpBytes}",
+        "tooltip-format-ethernet": "{ipaddr}/{cidr}\n↓{bandwidthDownBytes} ↑{bandwidthUpBytes}",
+        "tooltip-format-disconnected": "Disconnected"
     },
     
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-muted": "󰝟 {volume}%",
+        "format-muted": "󰝟{volume}%",
         "format-icons": {
             "default": ["󰕿", "󰖀", "󰕾"]
         },
@@ -60,5 +71,10 @@
     "clock": {
         "format": " {:%b %d  %I:%M %p} ",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "tray": {
+        "icon-size": 20,
+	"spacing": 10
     }
 }
