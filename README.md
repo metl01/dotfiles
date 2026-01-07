@@ -16,6 +16,6 @@ Waybar,
 Rofi,
 and Kitty
 
-Wallpaper Switcher courtesy of vittv. Check out their github!
+Wallpaper Switcher & Power Menu scripts courtesy of vittv. Check out their github!
 
 https://github.com/Vittv
