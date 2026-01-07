@@ -3,7 +3,7 @@
  * Place this file at: ~/.config/rofi/config.rasi
  * Uses system colorscheme (Nord)
  */
-
+/*this is a test*/
 configuration {
     modi: "drun,run,window";
     show-icons: true;
