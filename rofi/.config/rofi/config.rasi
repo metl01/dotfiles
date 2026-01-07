@@ -1,7 +1,7 @@
 /**
  * Rofi Configuration
  * Place this file at: ~/.config/rofi/config.rasi
- * Uses system colorscheme (Catppuccin Mocha via KDE Plasma)
+ * Uses system colorscheme (Nord)
  */
 
 configuration {
@@ -63,7 +63,8 @@ listview {
     spacing: 4px;
     cycle: false;
     dynamic: true;
-    scrollbar: false;
+    scrollbar: true;
+    border: 0;
 }
 
 element {
@@ -97,6 +98,15 @@ element-text {
     background-color: transparent;
     text-color: inherit;
     vertical-align: 0.5;
+}
+
+scrollbar {
+    border-radius: 10px;
+    border-color: @bg-selected;
+    background-color: @bg-alt;
+    handle-width: 6px;
+    handle-rounded-corners: true;
+    handle-color: @accent;
 }
 
 /* Import system theme colors */
