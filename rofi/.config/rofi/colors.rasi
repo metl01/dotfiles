@@ -7,8 +7,8 @@
   bg-selected: #8fbcbb;
     
   /* Foreground colors */
-  fg: #d8dee9;
-  fg-dim: #2e3440;
+  fg: #e5e9f0;
+  fg-dim: #d8dee9;
     
   /* Accent color */
   accent: #8fbcbb;
