@@ -52,11 +52,21 @@ window#waybar {
 	color: @orange;
 }
 
+#power-profiles-daemon.performance {
+	color: @red
+}
+
+#power-profiles-daemon.balanced {
+	color: @nord8;
+}
+
+#power-profiles-daemon.power-saver {
+	color: @green;
+}
 
 #network {
-    padding: 0px 0px;
-    color: @green;
-    margin-right: 14px;
+    color: @nord9;
+    margin-right: 6px;
     transition: all 0.3s ease;
 }
 
@@ -80,8 +90,6 @@ window#waybar {
 }
 
 #tray { 
-    padding: 4px 0px;
-    margin: 6px 0px;
     color: @nord4;
 }
 

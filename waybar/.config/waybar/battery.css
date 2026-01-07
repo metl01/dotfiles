@@ -1,38 +1,38 @@
 #battery{
-	padding: 4px 12px;
-	margin: 8px 0;
-	background-color: @green;
-	color: @base;
-	border-radius: 10px;
+	color: @green;
+	margin-right: 16px
 }
 
-#battery.good{
-	background-color: @green;
+#battery.warning {
+	background-color: transparent;
+	color: @yellow;
 }
-#battery.good:hover{
-	background-color: shade(@green, 1.1)
+
+@keyframes chargingBlink {
+	to{
+		color: transparent;
+	}
 }
-#battery.warning{
-	background-color: @yellow;
+
+@keyframes dyingBlink {
+	to {
+		color: transparent;
+	}
 }
-#battery.warning:hover{
-	background-color: shade(@yellow, 1.1)
+
+#battery.charging, #battery.plugged {
+	color: @green;
+	animation-name: chargingBlink;
+	animation-duration: 2s;
+	animation-timing-function: steps(36);
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
 }
-#battery.critical{
-	background-color: @red;
-}
-#battery.critical:hover{
-	background-color: shade(@red, 1.1)
-}
-#battery.charging{
-	background-color: @green;
-}
-#battery.charging:hover{
-	background-color: shade(@green, 1.1)
-}
-#battery.plugged{
-	background-color: @green;
-}
-#battery.plugged:hover{
-	background-color: shade(@green, 1.1)
+#battery.critical:not(.charging) {
+	color: @red;
+	animation-name: dyingBlink;
+	animation-duration: 1s;
+	animation-timing-function: steps(18);
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
 }

@@ -9,7 +9,7 @@
     
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "custom/seperator", "custom/gpu-temp", "temperature", "custom/seperator", "pulseaudio", "network", "battery"],
+    "modules-right": ["tray", "custom/seperator", "custom/gpu-temp", "temperature", "power-profiles-daemon", "custom/seperator", "pulseaudio", "network", "battery"],
     
     "hyprland/workspaces": {
         "format": "{name}",
@@ -34,7 +34,7 @@
     },
        "custom/gpu-temp": {
       //  "exec": "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits",  // For NVIDIA
-        "exec": "cat /sys/class/drm/card1/device/hwmon/hwmon*/temp2_input | awk '{print $1/1000}'",  // For AMD
+        "exec": "cat /sys/class/drm/card1/device/hwmon/hwmon*/temp1_input | awk '{print $1/1000}'",  // For AMD
         "format": "󰍹 {}°C",
         "tooltip-format": "GPU {}°C",
         "interval": 5,
@@ -44,9 +44,24 @@
 
     "battery": {
 	    "states":{
-		    "good": 100,
-		    "warning": 80,
-		    "critical": 30
+		    "warning": 30,
+		    "critical": 10
+	    },
+	    "format": "{capacity}% {icon}",
+	    "format-full": "{capacity}% {icon}",
+	    "format-charging": "{capacity}% ",
+	    "format-icons": ["", "", "", "", ""]
+    },
+
+    "power-profiles-daemon": {
+	    "format": "{icon}",
+	    "tooltip-format": "Power profile: {icon} {profile}",
+	    "tooltip": true,
+	    "format-icons": {
+		    "default": "  ",
+		    "performace": "  ",
+		    "balanced": "  ",
+		    "power-saver": " 󰌪 "
 	    }
     },
 
@@ -56,7 +71,9 @@
         "format-disconnected": "󰤮",
         "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}\n↓{bandwidthDownBytes} ↑{bandwidthUpBytes}",
         "tooltip-format-ethernet": "{ipaddr}/{cidr}\n↓{bandwidthDownBytes} ↑{bandwidthUpBytes}",
-        "tooltip-format-disconnected": "Disconnected"
+        "tooltip-format-disconnected": "Disconnected",
+	"on-click": "nmcli connection up Home && pkill waybar && waybar &",
+	"on-click-right": "nmcli connection down Home"
     },
     
     "pulseaudio": {
