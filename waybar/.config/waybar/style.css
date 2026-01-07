@@ -80,8 +80,6 @@ window#waybar {
 }
 
 #tray { 
-    padding: 4px 0px;
-    margin: 6px 0px;
     color: @nord4;
 }
 
