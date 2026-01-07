@@ -63,25 +63,20 @@ fi
 # Full path to selected wallpaper (using ~/ for hyprpaper compatibility)
 WALLPAPER_PATH="~/Pictures/Wallpapers/$SELECTED"
 
-# Write new hyprpaper config with new format for both monitors
+# Write new hyprpaper config with new format
 cat > "$CONFIG_FILE" << EOF
 splash = false
 
 wallpaper {
-  monitor = DP-1
+  monitor = eDP-1
   path = $WALLPAPER_PATH
   fit_mode = cover
 }
 
-wallpaper {
-  monitor = DP-2
-  path = $WALLPAPER_PATH
-  fit_mode = cover
-}
 EOF
 
 # Update hyprlock config - replace the path line in the background section
-sed -i "s|path = .*|path = $WALLPAPER_PATH|g" "$HYPRLOCK_CONFIG"
+sed -i "s|path = ~/Pictures/W.*|path = $WALLPAPER_PATH|g" "$HYPRLOCK_CONFIG"
 
 # Restart hyprpaper
 killall hyprpaper 2>/dev/null
