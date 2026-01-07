@@ -18,4 +18,4 @@ and Kitty
 
 Wallpaper Switcher courtesy of vittv. Check out their github!
 
-https://https://github.com/Vittv
+https://github.com/Vittv
