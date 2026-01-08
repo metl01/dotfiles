@@ -13,14 +13,12 @@ window#waybar {
 }
 
 #workspaces {
-  margin-left: 8px;
-  margin: 6px;
+  margin: 6px 6px;
   padding: 0;
 }
 
 #workspaces button {
-  padding: 0px 6px;
-  margin-right: 3px;
+  padding: 0px 4px;
   border-radius: 20%;
   background-color: inherit;
   color: @nord7;
