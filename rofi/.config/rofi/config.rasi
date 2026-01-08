@@ -28,8 +28,8 @@ window {
     border: 2px;
     border-color: @accent;
     border-radius: 8px;
-    width: 600px;
-    padding: 16px;
+    width: 400px;
+    padding: 8px;
 }
 
 mainbox {
