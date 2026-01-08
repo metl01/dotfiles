@@ -47,12 +47,12 @@ done
 # Show rofi with image previews
 SELECTED=$(echo -en "$MENU_ENTRIES" | rofi -dmenu \
     -i \
-    -p "Select Wallpaper" \
-    -theme-str 'window {location: center; anchor: center; width: 800px; height: 45%;}' \
+    -p "Select Wallpaper:" \
+    -theme-str 'window {location: center; anchor: center; width: 800px; height: 57%;}' \
     -theme-str 'listview {columns: 5; scrollbar: true; spacing: 0px; flow: horizontal;}' \
-    -theme-str 'element {padding: 10px; orientation: vertical; border-radius: 8px;}' \
-    -theme-str 'element-icon {size: 130px; border-radius: 8px;}' \
-    -theme-str 'element-text {horizontal-align: 0.5; margin: 5px 0 0 0;}' \
+    -theme-str 'element {padding: 4px; orientation: vertical; border-radius: 8px;}' \
+    -theme-str 'element-icon {size: 150px; border-radius: 8px;}' \
+    -theme-str 'element-text {horizontal-align: 0.5; margin: 0px 0 0 0;}' \
     -show-icons)
 
 # Exit if nothing selected
@@ -68,20 +68,15 @@ cat > "$CONFIG_FILE" << EOF
 splash = false
 
 wallpaper {
-  monitor = DP-1
+  monitor = eDP-1
   path = $WALLPAPER_PATH
   fit_mode = cover
 }
 
-wallpaper {
-  monitor = DP-2
-  path = $WALLPAPER_PATH
-  fit_mode = cover
-}
 EOF
 
 # Update hyprlock config - replace the path line in the background section
-sed -i "s|path = .*|path = $WALLPAPER_PATH|g" "$HYPRLOCK_CONFIG"
+sed -i "s|path = ~/Pictures/Wallpaper/.*|path = $WALLPAPER_PATH|g" "$HYPRLOCK_CONFIG"
 
 # Restart hyprpaper
 killall hyprpaper 2>/dev/null
