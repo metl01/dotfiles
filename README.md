@@ -14,6 +14,8 @@ Hyprpicker,
 Hyprpaper,
 Waybar,
 Rofi,
+Imagemagick,
+Power Profiles Daemon,
 and Kitty
 
 Wallpaper Switcher & Power Menu scripts courtesy of vittv. Check out their github!
