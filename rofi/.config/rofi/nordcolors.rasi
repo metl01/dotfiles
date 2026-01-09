@@ -2,14 +2,14 @@
   /* Background colors */
   /* E6 = 90% opacity */
   /* F2 = 95% opacity */
-  bg: #24283BE6;
-  bg-alt: #1b1e2dE6;
-  bg-selected: #7aa2f7;
+  bg: #3b4252E6;
+  bg-alt: #2e3440;
+  bg-selected: #8fbcbb;
     
   /* Foreground colors */
-  fg: #c0caf5;
-  fg-dim: #a9b1d6;
+  fg: #e5e9f0;
+  fg-dim: #d8dee9;
     
   /* Accent color */
-  accent: #7aa2f7;
+  accent: #8fbcbb;
 }
