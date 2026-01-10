@@ -64,8 +64,13 @@ window#waybar {
 
 #network {
     color: @blue;
+}
+#network.ethernet {
     margin-right: 6px;
-    transition: all 0.3s ease;
+}
+    
+#network.wifi {
+    margin-right: 9px;
 }
 
 #pulseaudio {
