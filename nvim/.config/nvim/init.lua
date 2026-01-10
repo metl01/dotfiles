@@ -18,7 +18,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-  --{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  
   {
   "folke/tokyonight.nvim",
   name = "tokyonight-storm",
@@ -54,8 +54,7 @@ require("lazy").setup(plugins, opts, {
     enabled = false,
   },
 })
--- require("catppuccin").setup()
--- vim.cmd.colorscheme "catppuccin"
+
 local builtin = require("telescope.builtin")
 vim.keymap.set ('n', '<C-p>', builtin.find_files, {})
 vim.keymap.set ('n', '<leader>fg', builtin.live_grep, {})
