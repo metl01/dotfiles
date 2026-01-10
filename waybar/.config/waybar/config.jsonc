@@ -34,7 +34,7 @@
     },
        "custom/gpu-temp": {
       //  "exec": "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits",  // For NVIDIA
-        "exec": "cat /sys/class/drm/card1/device/hwmon/hwmon*/temp2_input | awk '{print $1/1000}'",  // For AMD
+        "exec": "cat /sys/class/drm/card1/device/hwmon/hwmon*/temp1_input | awk '{print $1/1000}'",  // For AMD
         "format": "󰍹 {}°C",
         "tooltip-format": "GPU {}°C",
         "interval": 5,
