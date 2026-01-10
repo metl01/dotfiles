@@ -20,13 +20,13 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
   --{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
-  "gbprod/nord.nvim",
-  name = "nord",
+  "folke/tokyonight.nvim",
+  name = "tokyonight-storm",
   lazy = false,
   priority = 1000,
   config = function()
-    require("nord").setup({})
-    vim.cmd.colorscheme("nord")
+    require("tokyonight").setup({})
+    vim.cmd.colorscheme("tokyonight-storm")
   end,
   },
 

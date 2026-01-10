@@ -1,4 +1,4 @@
-@import "tokyonight.css";
+@import "nord.css";
 * {
     font-family: "AdwaitaMono", sans-serif;
     font-size: 15px;
@@ -6,9 +6,9 @@
 }
 
 window#waybar {
-    background-color: alpha(@base, 0.9);
+    background-color: alpha(@nord1, 0.9);
     border-radius: 8px;
-    border: 2px solid @accent;
+    border: 2px solid @nord7;
 }
 
 #workspaces {
@@ -22,22 +22,22 @@ window#waybar {
   margin-right: 3px;
   border-radius: 20%;
   background-color: inherit;
-  color: @accent;
+  color: @nord7;
   transition: 0.3s ease;
 }
 
 #workspaces button.active {
-  background-color: @accent;
-  color: @base;
+  background-color: @nord7;  
+  color: @nord0;
 }
 
 #workspaces button:hover {
-  background-color: shade(@accent, 0.9);
-  color: @base;
+  background-color: shade(@nord7, 0.8);
+  color: @nord0;
 }
 
 #window {
-    color: @accent;
+    color: @nord7;
 }
 
 #temperature {
@@ -54,20 +54,20 @@ window#waybar {
 
 #network {
     padding: 0px 0px;
-    color: @blue;
+    color: @green;
     margin-right: 14px;
     transition: all 0.3s ease;
 }
 
 #pulseaudio {
-    color: @magenta;
+    color: @lavender;
     transition: all 0.3s ease;
 }
 
 #clock {
     padding: 4px 12px;
     background-color: inherit;
-    color: @text;
+    color: @nord4;
     margin: 6px 0;
     border-radius: 10px;
     transition: all 0.3s ease;
@@ -75,9 +75,13 @@ window#waybar {
 }
 
 #clock:hover {
-    background-color: shade(@base, 0.8);
+    background-color: @nord1;
+}
+
+#tray { 
+    color: @nord4;
 }
 
 #custom-seperator {
-    color: @text;
+    color: @nord4;
 }
