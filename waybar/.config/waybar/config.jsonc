@@ -9,8 +9,8 @@
     
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "custom/seperator", "custom/gpu-temp", "temperature", "custom/seperator", "pulseaudio", "network", "battery"],
-    
+    "modules-right": ["tray", "custom/seperator", "custom/gpu-temp", "temperature", "custom/seperator", "pulseaudio", "network", "custom/seperator", "custom/menu"], 
+
     "hyprland/workspaces": {
         "format": "{name}",
         "on-click": "activate",
@@ -22,6 +22,24 @@
 
     "custom/seperator": {
 	"format": "|"
+    },
+
+  "custom/menu": {
+      "tooltip": false,
+      "format": "{icon}",
+      "format-icons": {
+          "notification": "",
+          "none": "",
+          "dnd-notification": "",
+          "dnd-none": ""
+    },
+      "return-type": "json",
+      "exec-if": "which swaync-client",
+      "exec": "swaync-client -swb",
+      "on-click": "swaync-client -t -sw",
+      "on-click-right": "swaync-client -d -sw",
+      "on-click-middle": "swaync-client -C",
+      "escape": true
     },
 
     "temperature": {
@@ -42,15 +60,7 @@
         "on-click": "kitty btop"
     },
 
-    "battery": {
-	    "states":{
-		    "good": 100,
-		    "warning": 80,
-		    "critical": 30
-	    }
-    },
-
-    "network": {
+     "network": {
         "format-wifi": "󰤨",
         "format-ethernet": "󰈀",
         "format-disconnected": "󰤮",
@@ -61,7 +71,7 @@
     
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-muted": "󰝟{volume}%",
+        "format-muted": "󰝟 {volume}%",
         "format-icons": {
             "default": ["󰕿", "󰖀", "󰕾"]
         },

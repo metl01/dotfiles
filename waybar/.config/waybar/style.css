@@ -1,7 +1,7 @@
 @import "tokyonight.css";
 * {
     font-family: "AdwaitaMono", sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
 }
 
@@ -51,11 +51,27 @@ window#waybar {
 	color: @orange;
 }
 
+#custom-menu {
+  color: @green;
+  margin-right: 20px;
+  margin-left: 2px;
+
+}
+
+#custom-menu.dnd-none {
+  margin-right: 22px;
+  margin-left: 0px;
+}
+
+#custom-menu.dnd-notification {
+  margin-right: 22px;
+  margin-left: 0px;
+}
 
 #network {
     padding: 0px 0px;
     color: @blue;
-    margin-right: 14px;
+    margin-right: 4px;
     transition: all 0.3s ease;
 }
 
