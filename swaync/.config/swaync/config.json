@@ -48,7 +48,10 @@
         "notifications"
     ],
     "widget-config": {
-        "mpris": {
+        "notifications": {
+      "vexpand": false
+    },
+    "mpris": {
             "image-size": 50,
             "image-radius": 0
         },
