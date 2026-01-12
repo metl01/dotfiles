@@ -45,7 +45,7 @@
 .notification-row .notification-background .notification {
   /* The actual notification */
   border-radius: 12px;
-  border: 2px solid @orange;
+  border: 2px solid @blue;
   padding: 0;
   transition: var(--hover-tranistion);
   background: @surface2;
@@ -291,7 +291,7 @@
   background: alpha(@base, 0.9);
   color: @text;
   border-radius: 12px;
-  border: 2px solid @orange;
+  border: 2px solid @blue;
 }
 
 .control-center .control-center-list-placeholder {
