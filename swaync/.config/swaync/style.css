@@ -45,7 +45,7 @@
 .notification-row .notification-background .notification {
   /* The actual notification */
   border-radius: 12px;
-  border: 2px solid @blue;
+  border: 2px solid @orange;
   padding: 0;
   transition: var(--hover-tranistion);
   background: @surface2;
@@ -291,7 +291,7 @@
   background: alpha(@base, 0.9);
   color: @text;
   border-radius: 12px;
-  border: 2px solid @blue;
+  border: 2px solid @orange;
 }
 
 .control-center .control-center-list-placeholder {
@@ -422,7 +422,7 @@ tooltip {
 .widget-mpris .widget-mpris-player {
   margin: 8px 20px;
   border-radius: var(--border-radius);
-  border: 2px solid @blue;
+  border: 2px solid @orange;
   box-shadow: var(--mpris-album-art-shadow);
 }
 
