@@ -1,5 +1,4 @@
 @import "tokyonight.css";
-@import "battery.css";
 * {
     font-family: "AdwaitaMono", sans-serif;
     font-size: 15px;
@@ -116,4 +115,44 @@ window#waybar {
 
 #custom-seperator {
     color: @text;
+}
+/*  Style Battery Widget */
+#battery {
+	color: @green;
+	margin-right: 7px
+}
+/* When Battery is below 30  change to yellow */
+#battery.warning {
+	background-color: transparent;
+	color: @yellow;
+}
+/* Charging Animation */
+@keyframes chargingBlink {
+	to{
+		color: transparent;
+	}
+}
+/*Battery Critical Animation*/
+@keyframes dyingBlink {
+	to {
+		color: transparent;
+	}
+}
+/* Battery when charing and not full configuration*/
+#battery.charging:not(.full), #battery.plugged:not(.full) {
+	color: @green;
+	animation-name: chargingBlink;
+	animation-duration: 2s;
+	animation-timing-function: steps(36);
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+/* Battery when critical and not charging configuration*/
+#battery.critical:not(.charging) {
+	color: @red;
+	animation-name: dyingBlink;
+	animation-duration: 1s;
+	animation-timing-function: steps(18);
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
 }
