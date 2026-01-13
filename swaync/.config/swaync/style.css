@@ -445,7 +445,7 @@ tooltip {
 .widget-mpris .widget-mpris-player {
   margin: 8px 20px;
   border-radius: var(--border-radius);
-  border: 2px solid @orange;
+  border: 2px solid @red;
   box-shadow: var(--mpris-album-art-shadow);
 }
 
