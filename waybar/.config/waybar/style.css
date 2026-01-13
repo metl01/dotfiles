@@ -20,6 +20,7 @@ window#waybar {
 #workspaces button {
   padding: 0px 5px;
   border-radius: 20%;
+  margin-right: 2px;
   background-color: inherit;
   color: @accent;
   transition: 0.3s ease;
