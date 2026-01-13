@@ -1,4 +1,9 @@
 @import url("../colors/schemes/tokyonight/storm/colors.css");
+:root {
+  --hover-transition: var(--hover-tranistion);
+  --group-collapse-transition: var(--group-collapse-tranistion);
+}
+
 
 * {
     outline: none;
@@ -26,6 +31,7 @@
 .close-button:hover {
   box-shadow: none;
   background: @red;
+  transition: var(--hover-tranistion);
   border: none;
 }
 
@@ -34,9 +40,9 @@
   outline: none;
 }
 
-.notification-row:focus {
+/*.notification-row:focus {
   background: @base;
-}
+}*/
 
 .notification-row .notification-background {
   padding: 6px 12px;
@@ -167,13 +173,13 @@
   border-radius: 12;
 }*/
 
-.notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-button {
+/*.notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-button {
   margin-left: 4px;
   background: @base;
   border: var(--border);
   border-radius: var(--border-radius);
   color: @text;
-}
+}*/
 
 .notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-button:disabled {
   background: @base;
@@ -206,12 +212,12 @@
 
 .notification-group {
   /* Styling only for Grouped Notifications */
-  transition: opacity 200ms ease-in-out;
+  background: transparent;
   /* The groups close button */
 }
 
 .notification-group:focus {
-  background: @base;
+  background: transparent;
 }
 
 .notification-group.low {
@@ -229,7 +235,12 @@
 .notification-group .notification-group-close-button .close-button {
   margin: 12px 20px;
   color: @text;
-  background-color: @surface2;
+  background-color: @surface0;
+}
+
+.notification-group .notification-group-close-button .close-button:hover {
+  background-color: @red;
+  transition: var(--hover-tranistion);
 }
 
 .notification-group .notification-group-buttons, .notification-group .notification-group-headers {
@@ -250,18 +261,30 @@
   color: @text;
 }
 
-.notification-group .notification-group-buttons {
+.notification-group .notification-group-buttons .notification-group-close-all-button {
   /* Notification Group Buttons */
   color: @text;
 }
 
+.notification-group .notification-group-buttons .notification-group-collapse-button:hover {
+  background-color: @blue;
+  transition: var(--hover-tranistion);
+}
+
+.notification-group .notification-group-buttons .notification-group-close-all-button:hover {
+  /* Notification Group Close Button */
+  background-color: @red;
+  transition: var(--hover-tranistion);
+}
+
+
 .notification-group.collapsed {
   /* When another group is expanded, lower the opacity of the collapsed ones */
-  background: @base;
+  background: transparent;
 }
 
 .notification-group.expand {
-  background: @surface2;
+  background: alpha(@base, 0.9);
 }
 
 .notification-group.collapsed.not-expanded {
@@ -269,7 +292,7 @@
 }
 
 .notification-group.collapsed .notification-row .notification {
-  background-color: @surface2;
+  background-color: @surface2; /* color of notification */
 }
 
 .notification-group.collapsed .notification-row:not(:last-child) {
@@ -279,11 +302,11 @@
 
 .notification-group.collapsed .notification-row:not(:last-child) .notification-action,
 .notification-group.collapsed .notification-row:not(:last-child) .notification-default-action {
-  opacity: 0;
+  opacity: .5;
 }
 
 .notification-group.collapsed:hover .notification-row:not(:only-child) .notification {
-  background-color: @surface0;
+  background-color: @surface0; /* color of grouped notifications when hovering */
 }
 
 .control-center {
@@ -296,12 +319,12 @@
 
 .control-center .control-center-list-placeholder {
   /* The placeholder when there are no notifications */
-  opacity: 1;
+  opacity: 0.9;
 }
 
 .control-center .control-center-list {
-  /* List of notifications */
-  background: @surface2;
+  /* Drop Down List of notifications */
+  background: transparent;
 }
 
 .control-center-list {
