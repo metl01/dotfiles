@@ -62,6 +62,23 @@ window#waybar {
 	color: @green;
 }
 
+#custom-menu {
+  color: @green;
+  margin-right: 20px;
+  margin-left: 2px;
+
+}
+
+#custom-menu.dnd-none {
+  margin-right: 22px;
+  margin-left: 0px;
+}
+
+#custom-menu.dnd-notification {
+  margin-right: 22px;
+  margin-left: 0px;
+}
+
 #network {
     color: @blue;
 }
@@ -71,6 +88,10 @@ window#waybar {
     
 #network.wifi {
     margin-right: 9px;
+}
+
+#network.disconnected {
+  margin-right: 6px;
 }
 
 #pulseaudio {
