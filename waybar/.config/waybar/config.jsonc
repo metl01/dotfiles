@@ -42,6 +42,7 @@
       "escape": true
     },
 
+
     "temperature": {
         //"exec": "sensors | grep 'Tctl:' | awk '{print int($2)}' | tr -d '+°C'",
 	"hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input",
