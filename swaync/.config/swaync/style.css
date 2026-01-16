@@ -1,4 +1,4 @@
-@import url("../colors/schemes/tokyonight/storm/colors.css");
+@import url("../colors/schemes/gruvbox/dark/colors.css");
 :root {
   --hover-transition: var(--hover-tranistion);
   --group-collapse-transition: var(--group-collapse-tranistion);
@@ -51,7 +51,7 @@
 .notification-row .notification-background .notification {
   /* The actual notification */
   border-radius: 12px;
-  border: 2px solid @blue;
+  border: 2px solid @accent;
   padding: 0;
   transition: var(--hover-tranistion);
   background: @surface2;
@@ -254,7 +254,7 @@
 }
 
 .notification-group .notification-group-headers .notification-group-icon {
-  color: @blue;
+  color: @accent;
   -gtk-icon-size: var(--notification-group-icon-size);
 }
 
@@ -268,10 +268,14 @@
 }
 
 .notification-group .notification-group-buttons .notification-group-collapse-button:hover {
-  background-color: @blue;
+  background-color: @accent;
+  color: @base;
   transition: var(--hover-tranistion);
 }
-
+.notification-group .notification-group-buttons .notification-group-collapse-button:hover image {
+  color: @base;
+  transition: var(--hover-tranistion);
+}
 .notification-group .notification-group-buttons .notification-group-close-all-button:hover {
   /* Notification Group Close Button */
   background-color: @red;
@@ -281,11 +285,11 @@
 
 .notification-group.collapsed {
   /* When another group is expanded, lower the opacity of the collapsed ones */
-  background: transparent;
+  background: @base;
 }
 
 .notification-group.expand {
-  background: alpha(@base, 0.9);
+  background: @base;
 }
 
 .notification-group.collapsed.not-expanded {
@@ -312,10 +316,10 @@
 
 .control-center {
   /* The Control Center which contains the old notifications + widgets */
-  background: alpha(@base, 0.9);
+  background: @base;
   color: @text;
   border-radius: 9px;
-  border: 2px solid @blue;
+  border: 2px solid @accent;
 }
 
 .control-center .control-center-list-placeholder {
@@ -364,14 +368,14 @@
 
 scale slider {
   background-color: @surface2;
-  border: 2px solid @orange;
+  border: 2px solid @yellow;
   box-shadow: none;
 }
 
 scale slider:hover {
   background-color: @surface0;
   box-shadow: none;
-  border: 3px solid @orange;
+  border: 3px solid @yellow;
 }
 
 scale trough {
@@ -382,7 +386,7 @@ scale trough {
 }
 
 scale trough highlight {
-  background: @yellow;
+  background: @accent;
 }
 
 tooltip {
@@ -420,10 +424,10 @@ tooltip {
 
 .widget-buttons-grid > flowbox > flowboxchild > button:hover {
     background: @surface2;
-    box-shadow: 0px 0px 10px @blue;
+    box-shadow: 0px 0px 10px @accent;
 }
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
-    background: @blue;
+    background: @accent;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button:checked label {
@@ -431,13 +435,13 @@ tooltip {
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked:hover {
-    background: alpha(@blue, 0.9);
+    background: @accent;
 }
 
 /* Mpris widget */
 :root {
   --mpris-album-art-overlay: rgba(0, 0, 0, 0.55);
-  --mpris-button-hover: @blue;
+  --mpris-button-hover: @accent;
   --mpris-album-art-icon-size: 96px;
   --mpris-album-art-shadow: none;
 }
@@ -514,16 +518,16 @@ tooltip {
 }
 
 .widget-volume > box > slider > button {
-    background: @blue;
+    background: @accent;
 }
 
 
 .widget-volume > box > button.toggle:hover {
-    box-shadow: 0px 0px 10px @blue;
+    box-shadow: 0px 0px 10px @accent;
 }
 
 .widget-volume > box > button.toggle:checked {
-    background: @blue;
+    background: @accent;
     border: none;
 }
 .per-app-volume {
@@ -552,7 +556,7 @@ tooltip {
     padding: 0px;
 }
 .widget-dnd > switch:checked {
-    background: @blue;
+    background: @accent;
 }
 .widget-dnd > switch slider {
     background: @base;
@@ -583,7 +587,7 @@ tooltip {
     transition: all .7s ease;
 }
 .widget-title > button:hover {
-    background: alpha(@red2, 0.9);
+    background: @red2;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.65);
 }
 
