@@ -19,13 +19,13 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   {
-  "ellisonleao/gruvbox.nvim",
-  name = "gruvbox",
+  "folke/tokyonight.nvim",
+  name = "tokyonight-storm",
   lazy = false,
   priority = 1000,
   config = function()
-    require("gruvbox").setup({})
-    vim.cmd.colorscheme("gruvbox")
+    require("tokyonight").setup({})
+    vim.cmd.colorscheme("tokyonight-storm")
   end,
   },
 
@@ -44,16 +44,6 @@ local plugins = {
       indent = { enable = true },
     },
   },
-
-  {
-    "norcalli/nvim-colorizer.lua",
-      config = function()
-        require("colorizer").setup({
-          "css",
-          "javascript",
-        })
-      end,
-  }
 }
 
 local opts = {}
