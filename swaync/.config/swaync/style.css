@@ -314,7 +314,7 @@
   /* The Control Center which contains the old notifications + widgets */
   background: alpha(@base, 0.9);
   color: @text;
-  border-radius: 12px;
+  border-radius: 9px;
   border: 2px solid @blue;
 }
 
