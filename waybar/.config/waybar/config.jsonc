@@ -3,10 +3,6 @@
     "position": "top",
     "spacing": 10,
     "reload_style_on_change": true,
-    "margin-top": 8,
-    "margin-left": 8,
-    "margin-right": 8,
-    
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
     "modules-right": ["tray", "custom/seperator", "custom/gpu-temp", "temperature", "power-profiles-daemon", "custom/seperator", "pulseaudio", "network", "custom/seperator", "battery", "custom/menu"],
