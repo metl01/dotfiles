@@ -1,15 +1,1 @@
-* {
-  /* Background colors */
-  /* E6 = 90% opacity */
-  /* F2 = 95% opacity */
-  bg: #24283BE6;
-  bg-alt: #1b1e2dE6;
-  bg-selected: #7aa2f7;
-    
-  /* Foreground colors */
-  fg: #c0caf5;
-  fg-dim: #a9b1d6;
-    
-  /* Accent color */
-  accent: #7aa2f7;
-}
+@import "gruvbox-dark.rasi"

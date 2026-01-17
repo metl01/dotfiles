@@ -1,0 +1,15 @@
+* {
+  /* Background colors */
+  /* E6 = 90% opacity */
+  /* F2 = 95% opacity */
+  bg: #282828;
+  bg-alt: #1d2021;
+  bg-selected: #ebdbb2;
+    
+  /* Foreground colors */
+  fg: #ebdbb2;
+  fg-dim: #ebdbb2;
+    
+  /* Accent color */
+  accent: #ebdbb2;
+}

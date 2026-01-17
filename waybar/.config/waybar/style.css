@@ -1,4 +1,4 @@
-@import "tokyonight.css";
+@import "../colors/schemes/gruvbox/dark/colors.css";
 * {
     font-family: "AdwaitaMono", sans-serif;
     font-size: 14px;
@@ -6,9 +6,9 @@
 }
 
 window#waybar {
-    background-color: alpha(@base, 0.9);
-    border-radius: 8px;
-    border: 2px solid @accent;
+    background-color: @base;
+/*    border-radius: 8px;*/
+/*    border: 2px solid @accent; */
 }
 
 #workspaces {
@@ -22,17 +22,17 @@ window#waybar {
   margin-right: 3px;
   border-radius: 20%;
   background-color: inherit;
-  color: @accent;
+  color: @aqua;
   transition: 0.3s ease;
 }
 
 #workspaces button.active {
-  background-color: @accent;
+  background-color: @aqua;
   color: @base;
 }
 
 #workspaces button:hover {
-  background-color: shade(@accent, 0.9);
+  background-color: shade(@aqua, 0.9);
   color: @base;
 }
 

@@ -1,4 +1,4 @@
-@import url("../colors/schemes/tokyonight/storm/colors.css");
+@import url("../colors/schemes/gruvbox/dark/colors.css");
 :root {
   --hover-transition: var(--hover-tranistion);
   --group-collapse-transition: var(--group-collapse-tranistion);
@@ -15,7 +15,7 @@
 
 .close-button {
   /* The notification Close Button */
-  background: @surface0;
+  background: @base;
   color: @text;
   text-shadow: none;
   padding: 0;
@@ -51,7 +51,7 @@
 .notification-row .notification-background .notification {
   /* The actual notification */
   border-radius: 12px;
-  border: 2px solid @blue;
+  border: 2px solid @accent;
   padding: 0;
   transition: var(--hover-tranistion);
   background: @surface2;
@@ -84,7 +84,7 @@
 .notification-row .notification-background .notification .notification-default-action:hover {
   /*Notification Pop Up Themeing when hovering*/
   -gtk-icon-filter: none;
-  background: @surface0;
+  background: @base;
 }
 
 .notification-row .notification-background .notification .notification-default-action:not(:only-child) {
@@ -236,7 +236,7 @@
 .notification-group .notification-group-close-button .close-button {
   margin: 12px 20px;
   color: @text;
-  background-color: @surface0;
+  background-color: @base;
 }
 
 .notification-group .notification-group-close-button .close-button:hover {
@@ -254,7 +254,7 @@
 }
 
 .notification-group .notification-group-headers .notification-group-icon {
-  color: @blue;
+  color: @accent;
   -gtk-icon-size: var(--notification-group-icon-size);
 }
 
@@ -268,7 +268,12 @@
 }
 
 .notification-group .notification-group-buttons .notification-group-collapse-button:hover {
-  background-color: @blue;
+  background-color: @accent;
+  transition: var(--hover-tranistion);
+}
+
+.notification-group .notification-group-buttons .notification-group-collapse-button:hover image {
+  color: @base;
   transition: var(--hover-tranistion);
 }
 
@@ -307,7 +312,7 @@
 }
 
 .notification-group.collapsed:hover .notification-row:not(:only-child) .notification {
-  background-color: @surface0; /* color of grouped notifications when hovering */
+  background-color: @base; /* color of grouped notifications when hovering */
 }
 
 .control-center {
@@ -315,7 +320,7 @@
   background: alpha(@base, 0.9);
   color: @text;
   border-radius: 12px;
-  border: 2px solid @blue;
+/*  border: 2px solid @accent; */
 }
 
 .control-center .control-center-list-placeholder {
@@ -346,7 +351,7 @@
 .control-center .control-center-list .notification .notification-default-action:hover,
 .control-center .control-center-list .notification .notification-action:hover {
   /*Color of Notification in list when hovering*/
-  background-color: @surface0;
+  background-color: @base;
 }
 
 .blank-window {
@@ -369,7 +374,7 @@ scale slider {
 }
 
 scale slider:hover {
-  background-color: @surface0;
+  background-color: @base;
   box-shadow: none;
   border: 3px solid @orange;
 }
@@ -386,7 +391,7 @@ scale trough highlight {
 }
 
 tooltip {
-    background-color: @surface0;
+    background-color: @base;
 }
 
 /*** Widgets ***/
@@ -420,10 +425,10 @@ tooltip {
 
 .widget-buttons-grid > flowbox > flowboxchild > button:hover {
     background: @surface2;
-    box-shadow: 0px 0px 10px @blue;
+    box-shadow: 0px 0px 10px @accent;
 }
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
-    background: @blue;
+    background: @accent;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button:checked label {
@@ -431,13 +436,13 @@ tooltip {
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked:hover {
-    background: alpha(@blue, 0.9);
+    background: @accent;
 }
 
 /* Mpris widget */
 :root {
   --mpris-album-art-overlay: rgba(0, 0, 0, 0.55);
-  --mpris-button-hover: @blue;
+  --mpris-button-hover: @accent;
   --mpris-album-art-icon-size: 96px;
   --mpris-album-art-shadow: none;
 }
@@ -499,7 +504,7 @@ tooltip {
 
 .widget-mpris > box > button:disabled {
   /* Change player side buttons insensitive */
-  background-color: @surface0;
+  background-color: @base;
 }
 
 /* Volume widget */
@@ -514,18 +519,24 @@ tooltip {
 }
 
 .widget-volume > box > slider > button {
-    background: @blue;
+    background: @accent;
 }
 
 
 .widget-volume > box > button.toggle:hover {
-    box-shadow: 0px 0px 10px @blue;
+    box-shadow: 0px 0px 10px @accent;
 }
 
 .widget-volume > box > button.toggle:checked {
-    background: @blue;
+    background: @accent;
+    color: @base;
     border: none;
 }
+
+.widget-volume > box > button.toggle:checked label {
+    color: @base;
+}
+
 .per-app-volume {
     padding: 4px 8px 8px 8px;
     margin: 0px 8px 8px 8px;
@@ -552,7 +563,7 @@ tooltip {
     padding: 0px;
 }
 .widget-dnd > switch:checked {
-    background: @blue;
+    background: @accent;
 }
 .widget-dnd > switch slider {
     background: @base;
