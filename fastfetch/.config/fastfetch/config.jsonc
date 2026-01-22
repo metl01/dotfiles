@@ -53,6 +53,12 @@
             "format": "{2}h {3}m",
             "key": "󰥔",
             "keyColor": "blue",
+        },        
+        {
+            "type": "command",
+            "key": "󰧒",
+            "keyColor": "white",
+            "text": "birth_install=$(stat -c %W /); current=$(date +%s); days_difference=$(( (current - birth_install) / 86400 )); echo $days_difference days"
         },
         {
             "type": "memory",
