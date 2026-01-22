@@ -22,17 +22,17 @@ window#waybar {
   margin-right: 3px;
   border-radius: 20%;
   background-color: inherit;
-  color: @aqua;
+  color: @yellow;
   transition: 0.3s ease;
 }
 
 #workspaces button.active {
-  background-color: @aqua;
+  background-color: @yellow;
   color: @base;
 }
 
 #workspaces button:hover {
-  background-color: shade(@aqua, 0.9);
+  background-color: shade(@yellow, 0.9);
   color: @base;
 }
 

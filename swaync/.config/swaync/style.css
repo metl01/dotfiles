@@ -371,12 +371,12 @@ scale slider {
   background-color: @surface2;
   border: 2px solid @orange;
   box-shadow: none;
+  min-width: 14px;
+  min-height: 14px;
 }
 
 scale slider:hover {
   background-color: @base;
-  box-shadow: none;
-  border: 3px solid @orange;
 }
 
 scale trough {
@@ -384,6 +384,7 @@ scale trough {
   margin: 0rem 1rem;
   min-height: 8px;
   min-width: 70px;
+
 }
 
 scale trough highlight {
@@ -516,10 +517,6 @@ tooltip {
 
 .widget-volume > box > button {
     background: @surface2;
-}
-
-.widget-volume > box > slider > button {
-    background: @accent;
 }
 
 
