@@ -498,6 +498,10 @@ tooltip {
   background-color: var(--mpris-button-hover);
 }
 
+.widget-mpris .widget-mpris-player .mpris-overlay > box > button:hover image {
+  color: @base;
+}
+
 .widget-mpris > box > button {
   /* Change player side buttons */
   background-color: @surface2;
