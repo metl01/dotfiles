@@ -14,5 +14,3 @@ source = ~/.config/hypr/src/workspaces.conf
 source = ~/.config/hypr/src/rules.conf
 
 source = ./dms/binds.conf
-
-source = ./dms/cursor.conf
