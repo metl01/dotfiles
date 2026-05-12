@@ -155,14 +155,22 @@ overview {
 }
 // Add lines like this to spawn processes at startup.
 // Note that running niri as a session supports xdg-desktop-autostart,
-spawn-at-startup "discord"
-spawn-at-startup "steam"
-spawn-sh-at-startup "sleep 2 && input-remapper-control --command stop-all && input-remapper-control --command autoload"
 // which may be more convenient to use.
+spawn-at-startup "sh" "-c" "sleep 2 && discord"
+spawn-at-startup "sh" "-c" "sleep 2 && steam -silent"
+spawn-at-startup "sh" "-c" "sleep 3 && input-remapper-control --command stop-all && input-remapper-control --command autoload"
+spawn-at-startup "sh" "-c" "sleep 5 && rclone mount Drive: /mnt/Drive --vfs-cache-mode writes --vfs-cache-max-size 10G --dir-cache-time 5m --allow-other --log-file /tmp/rclone.log --log-level INFO"
+
+
+
 // See the binds section below for more spawn examples.
 // This line starts waybar, a commonly used bar for Wayland compositors.
 environment {
   XDG_CURRENT_DESKTOP "niri"
+  QT_QPA_PLATFORM "wayland"
+  QT_QPA_PLATFORMTHEME "qt6ct"
+  QT6CT_PLATFORM_THEME "qt6ct"
+
 }
 hotkey-overlay {
     skip-at-startup
