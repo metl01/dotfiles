@@ -1,0 +1,19 @@
+workspace "1" {
+    open-on-output "DP-1"
+  }
+workspace "2" {
+    open-on-output "DP-1"
+  }
+workspace  "3" {
+    open-on-output "DP-2"
+  }
+workspace  "4" {
+    open-on-output "DP-2"
+  }
+
+workspace "5"
+workspace "6"
+workspace "7"
+workspace "8"
+workspace "9"
+workspace "10"

@@ -1,0 +1,76 @@
+layer-rule {
+    match namespace="^quickshell$"
+    place-within-backdrop true
+}
+
+layer-rule {
+    match namespace="dms:blurwallpaper"
+    place-within-backdrop true
+}
+
+window-rule {
+    match app-id=r#"^org\.gnome\."#
+    draw-border-with-background false
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+window-rule {
+    match app-id=r#"^gnome-control-center$"#
+    match app-id=r#"^pavucontrol$"#
+    match app-id=r#"^nm-connection-editor$"#
+    default-column-width { proportion 0.5; }
+    open-floating false
+}
+window-rule {
+    match app-id=r#"^org\.gnome\.Calculator$"#
+    match app-id=r#"^gnome-calculator$"#
+    match app-id=r#"^galculator$"#
+    match app-id=r#"^blueman-manager$"#
+    match app-id=r#"^org\.gnome\.Nautilus$"#
+    match app-id=r#"^xdg-desktop-portal$"#
+    open-floating true
+}
+window-rule {
+    match app-id=r#"^steam$"# title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+    open-focused false
+}
+window-rule {
+    match app-id="kitty"
+    draw-border-with-background false
+}
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id="zoom"
+    open-floating true
+}
+// Open dms windows as floating by default
+window-rule {
+    match app-id=r#"org.quickshell$"#
+    match app-id=r#"com.danklinux.dms$"#
+    open-floating true
+}
+
+window-rule {
+  geometry-corner-radius 12
+   clip-to-geometry true
+        tiled-state true
+        draw-border-with-background false
+        }
+
+window-rule {
+    match app-id="^discord.*"
+    open-maximized true
+    open-on-workspace "3"
+}
+
+window-rule {
+  match app-id="^steam.*"
+  open-on-workspace "1"
+}
+
+window-rule {
+  match app-id="^gamescope.*"
+  open-on-workspace "1"
+  open-maximized true
+}
