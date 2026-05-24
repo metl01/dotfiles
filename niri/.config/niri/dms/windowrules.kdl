@@ -1,9 +1,0 @@
-// DMS Window Rules - Managed by DankMaterialShell
-// Do not edit manually - changes may be overwritten
-
-// @id=wr_1777751178414545767 @name=discord
-window-rule {
-    match app-id="^discord$"
-    open-maximized true
-    open-on-workspace "3"
-}
