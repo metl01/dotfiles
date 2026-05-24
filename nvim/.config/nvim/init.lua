@@ -1,9 +1,10 @@
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
-vim.cmd("set shiftwidth=2")
-vim.g.mapleader = " "
+-- vim ui2
+-- require("vim._core.ui2").enable({
+--   enable = true,
+-- })
+-- vim.opt.cmdheight = 0
 
+-- lazy.nvim package manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -17,80 +18,33 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local plugins = {
-  
---  {
---  "folke/tokyonight.nvim",
---  name = "tokyonight-storm",
---  lazy = false,
---  priority = 1000,
---  config = function()
---    require("tokyonight").setup({})
---    vim.cmd.colorscheme("tokyonight-night")
---  end,
---  },
+-- better text wrap
+-- vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindent = true
 
-{
-  "ellisonleao/gruvbox.nvim",
-  name = "gruvbox",
-  lazy = false,
-  priority = 1000,
-  config = function()
-    require("gruvbox").setup({})
-    vim.cmd.colorscheme("gruvbox")
-  end,
-  },
+-- tmux color fix
+vim.opt.termguicolors = true
 
-  {
-    "nvim-telescope/telescope.nvim",
-    tag = "v0.2.1",
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
-
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    opts = {
-      ensure_installed = { "lua", "css" },
-      highlight = { enable = true },
-      indent = { enable = true },
-    },
-  },
-
-  {
-    "norcalli/nvim-colorizer.lua",
-      config = function()
-        require("colorizer").setup({
-          "css",
-          "javascript",
-        })
-      end,
-  },
-
-  "nvim-mini/mini.indentscope",
-  version = false,
-  config = function()
-    require("mini.indentscope").setup({
-      vim.api.nvim_create_autocmd("FileType", {
-        desc = "Disable mini.indentscope on dashboard and utility buffers",
-        -- You can add other utility filetypes here (e.g., 'help', 'NvimTree', 'lazy', 'Trouble')
-        pattern = { "alpha", "dashboard", "neo-tree" },
-        callback = function()
-          vim.b.miniindentscope_disable = true
-        end,
-      })
-    })
-  end,
-}
-
-local opts = {}
-
-require("lazy").setup(plugins, opts, {
-  rocks = {
-    enabled = false,
+-- make all windows rounded
+vim.o.winborder = "rounded"
+require("prefs")
+require("md")
+require("latex")
+require("lazy").setup({
+  spec = {
+    { import = "plugins" },
+    { import = "plugins.lsp" },
+    { import = "themes" },
   },
 })
+require('config.floatty')
+vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
+-- In case you'd want to try that local theme,
+-- Uncomment the following line:
+-- vim.cmd.colorscheme("vaguevp")
 
-local builtin = require("telescope.builtin")
-vim.keymap.set ('n', '<C-p>', builtin.find_files, {})
-vim.keymap.set ('n', '<leader>fg', builtin.live_grep, {})
+-- builtin color preview - no more need for colorizer
+vim.lsp.document_color.enable(true, nil, { style = 'virtual' })
+
+
