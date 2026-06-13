@@ -74,3 +74,15 @@ window-rule {
   open-on-workspace "1"
   open-maximized true
 }
+
+window-rule {
+    match app-id="^ffxiv.*"
+    open-fullscreen true
+    open-on-workspace "1"
+}
+
+window-rule {
+    match app-id="^XIVLauncher.*"
+    open-maximized true
+    open-on-workspace "1"
+}

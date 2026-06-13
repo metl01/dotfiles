@@ -2,6 +2,7 @@ binds {
     Alt+Ctrl+Delete hotkey-overlay-title="Task Manager: Toggle" { spawn "dms" "ipc" "call" "processlist" "toggle"; }
     Super+D hotkey-overlay-title="App Launcher: Toggle" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
     Super+Shift+P hotkey-overlay-title="Power Menu: Toggle" { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
+    Super+Shift+N hotkey-overlay-title="Notepad: Toggle" {spawn "dms" "ipc" "call" "notepad" "toggle";}
 
     
     Super+1 hotkey-overlay-title="Focus Workspace 1" { focus-workspace "1"; }
@@ -28,7 +29,9 @@ binds {
     
     Mod+BracketLeft { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
-    Mod + C { center-column; }
+    Mod+C { center-column; }
+    Mod+Equal { set-column-width "+5%"; }
+    Mod+Minus { set-column-width "-5%"; }
 
     Super+F hotkey-overlay-title="Maximize Column" { maximize-column; }
     Super+H hotkey-overlay-title="Focus Left" { focus-column-left; }
@@ -45,7 +48,7 @@ binds {
 
     Super+V hotkey-overlay-title="Toggle Floating" { toggle-window-floating; }
 
-    Print hotkey-overlay-title="Screenshot (Interactive)" { screenshot show-pointer=true; }
+    Print hotkey-overlay-title="Screenshot (Interactive)" { screenshot show-pointer=false; }
 
     Super+Return { spawn "kitty"; }
 
