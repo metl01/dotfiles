@@ -94,3 +94,7 @@ animations {
     spring damping-ratio=0.85 stiffness=800 epsilon=0.0001
   }
 }
+cursor {
+    xcursor-theme "Adwaita"
+    xcursor-size 24
+}
