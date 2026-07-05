@@ -1,0 +1,15 @@
+# Secrets
+.env
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+
+# OS/editor cruft
+.DS_Store
+*.swp
+*~
+
+# DMS auto-generated configs
+niri/.config/niri/dms
+hyprland/.config/hypr/dms
