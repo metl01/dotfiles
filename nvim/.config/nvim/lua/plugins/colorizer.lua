@@ -10,7 +10,8 @@ return {
       "toml",
       "markdown",
       "typst",
-      "kdl"
+      "kdl",
+      "cpp"
     })
   end,
 }

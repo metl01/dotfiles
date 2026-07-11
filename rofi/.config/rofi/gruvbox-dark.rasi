@@ -4,12 +4,12 @@
   /* F2 = 95% opacity */
   bg: #282828;
   bg-alt: #1d2021;
-  bg-selected: #ebdbb2;
+  bg-selected: #fabd2f;
     
   /* Foreground colors */
   fg: #ebdbb2;
   fg-dim: #ebdbb2;
     
   /* Accent color */
-  accent: #ebdbb2;
+  accent: #d79921;
 }

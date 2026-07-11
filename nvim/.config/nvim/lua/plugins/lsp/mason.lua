@@ -16,7 +16,7 @@ return {
         "gopls",
         "tinymist",
         "clangd",
-        "rust_analyzer"
+        "rust_analyzer",
       },
     },
     dependencies = {

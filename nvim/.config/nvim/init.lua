@@ -47,4 +47,10 @@ vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
 -- builtin color preview - no more need for colorizer
 vim.lsp.document_color.enable(true, nil, { style = 'virtual' })
 
+vim.filetype.add({
+  extension = {
+    h = "c",
+  },
+})
+
 
