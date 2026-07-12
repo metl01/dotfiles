@@ -9,36 +9,20 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.clipboard = "unnamedplus"
 
--- Clipboard provider
--- If on Windows just install win32yank inside WSL
-
--- Wayland
-vim.g.clipboard = {
-  name = "WlClipboard",
-  copy = {
-    ["+"]  = "wl-copy",
-    ["*"]  = "wl-copy",
-  },
-  paste = {
-    ["+"] = "wl-paste --no-newline",
-    ["*"] = "wl-paste --no-newline",
-  },
-  cache_enabled = 0,
-}
 
 -- Xorg (make sure to install xclip as it doesn't always come with every distro)
--- vim.g.clipboard = {
---   name = "Xclip",
---   copy = {
---     ["+"]  = "xclip -selection clipboard",
---     ["*"]  = "xclip -selection primary",
---   },
---   paste = {
---     ["+"] = "xclip -selection clipboard -o",
---     ["*"] = "xclip -selection primary -o",
---   },
---   cache_enabled = 0,
--- }
+ vim.g.clipboard = {
+   name = "Xclip",
+   copy = {
+     ["+"]  = "xclip -selection clipboard",
+     ["*"]  = "xclip -selection primary",
+   },
+   paste = {
+     ["+"] = "xclip -selection clipboard -o",
+     ["*"] = "xclip -selection primary -o",
+   },
+   cache_enabled = 0,
+ }
 
 -- Keymaps
 vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
