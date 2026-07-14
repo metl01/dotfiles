@@ -1,5 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 /* appearance */
+#include <X11/Xutil.h>
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 1;
@@ -111,11 +112,13 @@ static const Key keys[] = {
 	  TAGKEYS(                        XK_7,                      6)
 	  TAGKEYS(                        XK_8,                      7)
 	  TAGKEYS(                        XK_9,                      8)
-  { MODKEY|ShiftMask,             XK_p,      quit,           {0} },
+  /*{ MODKEY|ShiftMask,             XK_p,      quit,           {0} },*/
   { MODKEY|ControlMask,           XK_equal,  incrgaps,       {.i = +1} },
   { MODKEY|ControlMask,           XK_minus,  incrgaps,       {.i = -1} },
   { MODKEY|ControlMask,           XK_g,      togglegaps,     {0} },
   { MODKEY|ControlMask|ShiftMask, XK_g,      defaultgaps,    {0} },
+  { MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD("$HOME/.local/bin/wallswitch.sh") },
+  { MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("$HOME/.local/bin/powermenu.sh") },
 };
 
 /* button definitions */
