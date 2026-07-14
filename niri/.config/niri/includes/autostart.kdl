@@ -1,4 +1,3 @@
 spawn-sh-at-startup "sleep 3 && discord"
 spawn-sh-at-startup "sleep 3 && steam -silent"
 spawn-sh-at-startup "sleep 3 && input-remapper-control --command stop-all && input-remapper-control --command autoload"
-spawn-sh-at-startup "sleep 3 && sunshine"
