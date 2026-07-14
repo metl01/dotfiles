@@ -1,0 +1,8 @@
+export PATH="$HOME/.local/bin:$PATH"
+xrandr --output DP-1 --mode 2560x1440 --rate 240 --pos 0x0 --scale 1 &
+xrandr --output DP-2 --mode 2560x1440 --rate 144 --pos 2560x0 --scale 1 &
+feh --bg-scale $HOME/Pictures/Wallpapers/Wizard101_Guess_They_Never_Miss_Huh.png &
+xset s off
+xset -dpms
+xdotool mousemove 1280 770
+$HOME/.local/bin/autostart.sh &
