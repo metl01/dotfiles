@@ -1,0 +1,4 @@
+#!/bin/sh
+icon=$(curl -s "wttr.in/?format=%c" 2>/dev/null)
+temp=$(curl -s "wttr.in/?format=%t" 2>/dev/null)
+echo "$icon $temp"
