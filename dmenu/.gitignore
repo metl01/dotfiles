@@ -1,0 +1,12 @@
+/dmenu
+/stest
+*.o
+compile_commands.json
+*.orig
+*.rej
+*.diff
+*.backup
+*~
+*.swp
+*.swo
+.cache/
