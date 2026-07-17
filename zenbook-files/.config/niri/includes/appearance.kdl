@@ -1,0 +1,100 @@
+layout {
+  background-color "transparent"
+  center-focused-column "never"
+  gaps 6
+
+  
+  preset-column-widths {
+    proportion 0.33333
+    proportion 0.5
+    proportion 0.66667
+  }
+
+  default-column-width { proportion 0.5; }
+    
+  focus-ring {
+    width 2
+    active-color   "#d8a657"
+    inactive-color "#a89984"
+    urgent-color   "#ea6962"
+  }
+
+  border {
+    width 2
+    active-color   "#d8a657"
+    inactive-color "#a89984"
+    urgent-color   "#ea6962"
+  }
+
+  shadow {
+    softness 30
+    spread 5
+    offset x=0 y=5
+    color "#00000070"
+  }
+
+  tab-indicator {
+    active-color   "#d8a657"
+    inactive-color "#a89984"
+    urgent-color   "#ea6962"
+  }
+    
+  insert-hint {
+    color "#d3869b80"
+  }
+ }
+
+recent-windows {
+    highlight {
+        corner-radius 12
+        active-color "#6a4d5d"
+        urgent-color "#ea6962"
+    }
+}
+
+prefer-no-csd
+
+animations {
+  workspace-switch {
+    spring damping-ratio=0.80 stiffness=523 epsilon=0.0001
+  }
+
+  window-open {
+    duration-ms 150
+    curve "ease-out-expo"
+  }
+
+  window-close {
+    duration-ms 150
+    curve "ease-out-quad"
+  }
+
+  horizontal-view-movement {
+    spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+  }
+
+  window-movement {
+    spring damping-ratio=0.75 stiffness=323 epsilon=0.0001
+  }
+
+  window-resize {
+    spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+  }
+
+  config-notification-open-close {
+    spring damping-ratio=0.65 stiffness=923 epsilon=0.001
+  }
+
+  screenshot-ui-open {
+    duration-ms 200
+    curve "ease-out-quad"
+  }
+
+  overview-open-close {
+    spring damping-ratio=0.85 stiffness=800 epsilon=0.0001
+  }
+}
+cursor {
+    xcursor-theme "Adwaita"
+    xcursor-size 24
+}
