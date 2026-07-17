@@ -14,14 +14,14 @@ layout {
     
   focus-ring {
     width 2
-    active-color   "#d3869b"
+    active-color   "#a9b665"
     inactive-color "#a89984"
     urgent-color   "#ea6962"
   }
 
   border {
     width 2
-    active-color   "#d3869b"
+    active-color   "#a9b665"
     inactive-color "#a89984"
     urgent-color   "#ea6962"
   }
@@ -34,7 +34,7 @@ layout {
   }
 
   tab-indicator {
-    active-color   "#d3869b"
+    active-color   "#a9b665"
     inactive-color "#a89984"
     urgent-color   "#ea6962"
   }
