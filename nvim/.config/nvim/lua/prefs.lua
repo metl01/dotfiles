@@ -10,19 +10,18 @@ vim.opt.relativenumber = true
 vim.opt.clipboard = "unnamedplus"
 
 
--- Xorg (make sure to install xclip as it doesn't always come with every distro)
- vim.g.clipboard = {
-   name = "Xclip",
-   copy = {
-     ["+"]  = "xclip -selection clipboard",
-     ["*"]  = "xclip -selection primary",
-   },
-   paste = {
-     ["+"] = "xclip -selection clipboard -o",
-     ["*"] = "xclip -selection primary -o",
-   },
-   cache_enabled = 0,
- }
+vim.g.clipboard = {
+  name = "wl-clipboard",
+  copy = {
+    ["+"] = "wl-copy",
+    ["*"] = "wl-copy --primary",
+  },
+  paste = {
+    ["+"] = "wl-paste --no-newline",
+    ["*"] = "wl-paste --no-newline --primary",
+  },
+  cache_enabled = 0,
+}
 
 -- Keymaps
 vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
