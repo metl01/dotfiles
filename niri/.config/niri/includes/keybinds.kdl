@@ -53,6 +53,14 @@ binds {
     Super+Return { spawn "kitty"; }
 
     Super+Tab hotkey-overlay-title="Toggle Overview" { toggle-overview; }
+
+    XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
+    XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
+    XF86AudioMute        { spawn "wpctl" "set-mute"   "@DEFAULT_AUDIO_SINK@" "toggle"; }
+
+    XF86MonBrightnessUp   { spawn "brightnessctl" "set" "+10%"; }
+    XF86MonBrightnessDown { spawn "brightnessctl" "set" "10%-"; }
+
 }
 
 recent-windows {
