@@ -1,4 +1,4 @@
 export PATH="$HOME/.local/bin:$PATH"
-feh --bg-scale ~/Pictures/Wallpapers/Lain.jpg &
+feh --bg-scale ~/Pictures/Wallpapers/Arch-Everforest.jpg &
 ~/.local/bin/autostart.sh &
 xss-lock -- slock &
