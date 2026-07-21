@@ -1,0 +1,13 @@
+*.o
+.cache/
+compile_commands.json
+*.orig
+*.rej
+*.backup
+*.diff
+*~
+*.swp
+*.swo
+tags
+cscope.*
+slock
