@@ -10,15 +10,29 @@ vim.opt.relativenumber = true
 vim.opt.clipboard = "unnamedplus"
 
 
+--vim.g.clipboard = {
+--  name = "wl-clipboard",
+--  copy = {
+--    ["+"] = "wl-copy",
+--    ["*"] = "wl-copy --primary",
+--  },
+--  paste = {
+--    ["+"] = "wl-paste --no-newline",
+--    ["*"] = "wl-paste --no-newline --primary",
+--  },
+--  cache_enabled = 0,
+--}
+
+
 vim.g.clipboard = {
-  name = "wl-clipboard",
+  name = "xclip",
   copy = {
-    ["+"] = "wl-copy",
-    ["*"] = "wl-copy --primary",
+    ["+"] = "xclip -selection clipboard",
+    ["*"] = "xclip -selection primary",
   },
   paste = {
-    ["+"] = "wl-paste --no-newline",
-    ["*"] = "wl-paste --no-newline --primary",
+    ["+"] = "xclip -selection clipboard -o",
+    ["*"] = "xclip -selection primary -o",
   },
   cache_enabled = 0,
 }
