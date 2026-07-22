@@ -16,8 +16,8 @@ static const unsigned int gappov    = 4;
 static       int smartgaps          = 0;
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "AdwaitaMono Nerd Font:size=12" };
-static const char dmenufont[]       = "AdwaitaMono Nerd Font:size=12";
+static const char *fonts[] = { "Noto Sans:size=12", "AdwaitaMono Nerd Font:size=12" };
+static const char dmenufont[] = "Noto Sans:size=12";
 static const char background[]       = "#272e33";
 static const char col_gray1[]       = "#7a8478";
 static const char foreground[]       = "#d3c6aa";
