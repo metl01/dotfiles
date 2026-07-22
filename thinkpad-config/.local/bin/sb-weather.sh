@@ -30,5 +30,5 @@ case "$condition_lc" in
     *) icon=$(printf '\U000f18f6') ;;
 esac
 
-echo "$icon $temp"
+echo "$icon  $temp"
 
