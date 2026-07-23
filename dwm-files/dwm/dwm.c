@@ -1265,7 +1265,7 @@ maprequest(XEvent *e)
 		manage(ev->window, &wa);
 }
 
-void
+void __attribute__((unused))
 monocle(Monitor *m)
 {
 	unsigned int n = 0;
@@ -1422,7 +1422,7 @@ propertynotify(XEvent *e)
 	}
 }
 
-void
+void __attribute__((unused))
 quit(const Arg *arg)
 {
 	running = 0;
@@ -1758,7 +1758,7 @@ incrgaps(const Arg *arg)
 	);
 }
 
-void
+void __attribute__((unused))
 incrigaps(const Arg *arg)
 {
 	setgaps(
@@ -1769,7 +1769,7 @@ incrigaps(const Arg *arg)
 	);
 }
 
-void
+void __attribute__((unused))
 incrogaps(const Arg *arg)
 {
 	setgaps(
@@ -1780,7 +1780,7 @@ incrogaps(const Arg *arg)
 	);
 }
 
-void
+void __attribute__((unused))
 incrohgaps(const Arg *arg)
 {
 	setgaps(
@@ -1791,7 +1791,7 @@ incrohgaps(const Arg *arg)
 	);
 }
 
-void
+void __attribute__((unused))
 incrovgaps(const Arg *arg)
 {
 	setgaps(
@@ -1802,7 +1802,7 @@ incrovgaps(const Arg *arg)
 	);
 }
 
-void
+void __attribute__((unused))
 incrihgaps(const Arg *arg)
 {
 	setgaps(
@@ -1813,7 +1813,7 @@ incrihgaps(const Arg *arg)
 	);
 }
 
-void
+void __attribute__((unused))
 incrivgaps(const Arg *arg)
 {
 	setgaps(
