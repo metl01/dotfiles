@@ -2066,14 +2066,29 @@ togglebar(const Arg *arg)
 void
 togglefloating(const Arg *arg)
 {
-	if (!selmon->sel)
+	Client *c = selmon->sel;
+	int mx, my, di, w, h;
+	unsigned int dui;
+	Window dummy;
+
+	if (!c)
 		return;
-	if (selmon->sel->isfullscreen) /* no support for fullscreen windows */
+	if (c->isfullscreen) /* no support for fullscreen windows */
 		return;
-	selmon->sel->isfloating = !selmon->sel->isfloating || selmon->sel->isfixed;
-	if (selmon->sel->isfloating)
-		resize(selmon->sel, selmon->sel->x, selmon->sel->y,
-			selmon->sel->w, selmon->sel->h, 0);
+	c->isfloating = !c->isfloating || c->isfixed;
+	if (c->isfloating) {
+		/* shrink to 60% of current size, with a sane floor */
+		w = MAX(c->w * 0.6, 200);
+		h = MAX(c->h * 0.6, 150);
+
+		XQueryPointer(dpy, root, &dummy, &dummy, &mx, &my, &di, &di, &dui);
+
+		/* center on cursor, clamped to the monitor's usable area */
+		mx = MIN(MAX(mx - w / 2, selmon->wx), selmon->wx + selmon->ww - w - 2 * c->bw);
+		my = MIN(MAX(my - h / 2, selmon->wy), selmon->wy + selmon->wh - h - 2 * c->bw);
+
+		resize(c, mx, my, w, h, 0);
+	}
 	arrange(selmon);
 }
 
