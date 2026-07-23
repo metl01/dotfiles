@@ -278,6 +278,7 @@ static int xerror(Display *dpy, XErrorEvent *ee);
 static int xerrordummy(Display *dpy, XErrorEvent *ee);
 static int xerrorstart(Display *dpy, XErrorEvent *ee);
 static void zoom(const Arg *arg);
+static void warpclient(const Client *c);
 
 /* variables */
 static Systray *systray = NULL;
@@ -955,6 +956,14 @@ focusin(XEvent *e)
 }
 
 void
+warpclient(const Client *c)
+{
+	if (!c)
+		return;
+	XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, c->w / 2, c->h / 2);
+}
+
+void
 focusmon(const Arg *arg)
 {
 	Monitor *m;
@@ -966,6 +975,7 @@ focusmon(const Arg *arg)
 	unfocus(selmon->sel, 0);
 	selmon = m;
 	focus(NULL);
+  warpclient(selmon->sel);
 }
 
 void
@@ -991,6 +1001,7 @@ focusstack(const Arg *arg)
 	if (c) {
 		focus(c);
 		restack(selmon);
+    warpclient(c);
 	}
 }
 
