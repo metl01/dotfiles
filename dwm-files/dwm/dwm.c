@@ -1361,10 +1361,12 @@ movemouse(const Arg *arg)
 	} while (ev.type != ButtonRelease);
 	XUngrabPointer(dpy, CurrentTime);
 	if ((m = recttomon(c->x, c->y, c->w, c->h)) != selmon) {
-		sendmon(c, m);
-		selmon = m;
-		focus(NULL);
-	} else {
+    sendmon(c, m);
+    if (selmon->sel)
+        unfocus(selmon->sel, 0);
+    selmon = m;
+    focus(NULL);
+} else {
 		if (!c->isfloating) {
 			int cx = c->x + c->w / 2, cy = c->y + c->h / 2;
 			Client *t;
@@ -2135,19 +2137,30 @@ spawn(const Arg *arg)
 void
 tag(const Arg *arg)
 {
-	if (selmon->sel && arg->ui & TAGMASK) {
-		selmon->sel->tags = arg->ui & TAGMASK;
-		focus(NULL);
-		arrange(selmon);
-	}
+    Client *c;
+    if (selmon->sel && arg->ui & TAGMASK) {
+        c = selmon->sel;
+        c->tags = arg->ui & TAGMASK;
+        view(arg);
+        warpclient(c);
+    }
 }
 
 void
 tagmon(const Arg *arg)
 {
-	if (!selmon->sel || !mons->next)
-		return;
-	sendmon(selmon->sel, dirtomon(arg->i));
+    Client *c;
+    Monitor *m;
+    if (!selmon->sel || !mons->next)
+        return;
+    c = selmon->sel;
+    m = dirtomon(arg->i);
+    sendmon(c, m);
+    if (selmon->sel)
+        unfocus(selmon->sel, 0);
+    selmon = m;
+    focus(NULL);
+    warpclient(selmon->sel);
 }
 
 void
