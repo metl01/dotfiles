@@ -177,6 +177,7 @@ static void checkotherwm(void);
 static void cleanup(void);
 static void cleanupmon(Monitor *mon);
 static void clientmessage(XEvent *e);
+static void swapclients(Client *c1, Client *c2);
 static void configure(Client *c);
 static void configurenotify(XEvent *e);
 static void configurerequest(XEvent *e);
@@ -1342,11 +1343,7 @@ movemouse(const Arg *arg)
 				ny = selmon->wy;
 			else if (abs((selmon->wy + selmon->wh) - (ny + HEIGHT(c))) < snap)
 				ny = selmon->wy + selmon->wh - HEIGHT(c);
-			if (!c->isfloating && selmon->lt[selmon->sellt]->arrange
-			&& (abs(nx - c->x) > snap || abs(ny - c->y) > snap))
-				togglefloating(NULL);
-			if (!selmon->lt[selmon->sellt]->arrange || c->isfloating)
-				resize(c, nx, ny, c->w, c->h, 1);
+			resize(c, nx, ny, c->w, c->h, 1);
 			break;
 		}
 	} while (ev.type != ButtonRelease);
@@ -1355,6 +1352,54 @@ movemouse(const Arg *arg)
 		sendmon(c, m);
 		selmon = m;
 		focus(NULL);
+	} else {
+		if (!c->isfloating) {
+			int cx = c->x + c->w / 2, cy = c->y + c->h / 2;
+			Client *t;
+
+			for (t = m->clients; t; t = t->next) {
+				if (t == c || t->isfloating || !ISVISIBLE(t))
+					continue;
+				if (cx >= t->x && cx < t->x + WIDTH(t)
+				&& cy >= t->y && cy < t->y + HEIGHT(t)) {
+					swapclients(c, t);
+					break;
+				}
+			}
+		}
+		arrange(m);
+	}
+}
+
+void
+swapclients(Client *c1, Client *c2)
+{
+	Client **pp1, **pp2, *tmp;
+
+	if (!c1 || !c2 || c1 == c2 || c1->mon != c2->mon)
+		return;
+
+	pp1 = &c1->mon->clients;
+	while (*pp1 != c1)
+		pp1 = &(*pp1)->next;
+	pp2 = &c2->mon->clients;
+	while (*pp2 != c2)
+		pp2 = &(*pp2)->next;
+
+	if (c1->next == c2) {
+		*pp1 = c2;
+		c1->next = c2->next;
+		c2->next = c1;
+	} else if (c2->next == c1) {
+		*pp2 = c1;
+		c2->next = c1->next;
+		c1->next = c2;
+	} else {
+		*pp1 = c2;
+		*pp2 = c1;
+		tmp = c1->next;
+		c1->next = c2->next;
+		c2->next = tmp;
 	}
 }
 
