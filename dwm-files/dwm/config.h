@@ -75,7 +75,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *termcmd[]  = { "kitty", NULL };
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", background, "-nf", foreground, "-sb", accent, "-sf", foreground2, NULL };
-static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
+static const char *screenshotcmd[] = { "sh", "-c", "scrot -s --freeze ~/Pictures/Screenshots/%Y-%m-%d_%H%M%S.png -e 'xclip -selection clipboard -t image/png < $f'", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
