@@ -1547,7 +1547,9 @@ resizerequest(XEvent *e)
 void
 resizemouse(const Arg *arg)
 {
-	int ocx, ocy, nw, nh;
+	int ocx, ocy, ow, oh;
+	int ref_x, ref_y;
+	int corner; /* 0=TL 1=TR 2=BL 3=BR */
 	Client *c;
 	Monitor *m;
 	XEvent ev;
@@ -1555,15 +1557,51 @@ resizemouse(const Arg *arg)
 
 	if (!(c = selmon->sel))
 		return;
-	if (c->isfullscreen) /* no support resizing fullscreen windows by mouse */
+	if (c->isfullscreen)
 		return;
 	restack(selmon);
 	ocx = c->x;
 	ocy = c->y;
+	ow = c->w;
+	oh = c->h;
+
+	{
+		Window dummy;
+		int mx, my, ddx, ddy;
+		unsigned int dmask;
+		XQueryPointer(dpy, root, &dummy, &dummy, &mx, &my, &ddx, &ddy, &dmask);
+		if (mx < ocx + WIDTH(c) / 2)
+			corner = my < ocy + HEIGHT(c) / 2 ? 0 : 2;
+		else
+			corner = my < ocy + HEIGHT(c) / 2 ? 1 : 3;
+	}
+
 	if (XGrabPointer(dpy, root, False, MOUSEMASK, GrabModeAsync, GrabModeAsync,
 		None, cursor[CurResize]->cursor, CurrentTime) != GrabSuccess)
 		return;
-	XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, c->w + c->bw - 1, c->h + c->bw - 1);
+
+	switch (corner) {
+	case 0:
+		XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, c->bw, c->bw);
+		break;
+	case 1:
+		XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, ow + c->bw - 1, c->bw);
+		break;
+	case 2:
+		XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, c->bw, oh + c->bw - 1);
+		break;
+	case 3:
+		XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, ow + c->bw - 1, oh + c->bw - 1);
+		break;
+	}
+
+	{
+		Window dummy;
+		int ddx, ddy;
+		unsigned int dmask;
+		XQueryPointer(dpy, root, &dummy, &dummy, &ref_x, &ref_y, &ddx, &ddy, &dmask);
+	}
+
 	do {
 		XMaskEvent(dpy, MOUSEMASK|ExposureMask|SubstructureRedirectMask, &ev);
 		switch(ev.type) {
@@ -1577,21 +1615,66 @@ resizemouse(const Arg *arg)
 				continue;
 			lasttime = ev.xmotion.time;
 
-			nw = MAX(ev.xmotion.x - ocx - 2 * c->bw + 1, 1);
-			nh = MAX(ev.xmotion.y - ocy - 2 * c->bw + 1, 1);
-			if (c->mon->wx + nw >= selmon->wx && c->mon->wx + nw <= selmon->wx + selmon->ww
-			&& c->mon->wy + nh >= selmon->wy && c->mon->wy + nh <= selmon->wy + selmon->wh)
 			{
-				if (!c->isfloating && selmon->lt[selmon->sellt]->arrange
-				&& (abs(nw - c->w) > snap || abs(nh - c->h) > snap))
-					togglefloating(NULL);
+				int dx = ev.xmotion.x - ref_x;
+				int dy = ev.xmotion.y - ref_y;
+				int nw, nh, nx, ny;
+
+				switch (corner) {
+				case 0: /* TL: anchor BR */
+					nw = MAX(ow - dx, 1);
+					nh = MAX(oh - dy, 1);
+					nx = ocx + dx;
+					ny = ocy + dy;
+					break;
+				case 1: /* TR: anchor BL */
+					nw = MAX(ow + dx, 1);
+					nh = MAX(oh - dy, 1);
+					nx = ocx;
+					ny = ocy + dy;
+					break;
+				case 2: /* BL: anchor TR */
+					nw = MAX(ow - dx, 1);
+					nh = MAX(oh + dy, 1);
+					nx = ocx + dx;
+					ny = ocy;
+					break;
+				case 3: /* BR: anchor TL */
+					nw = MAX(ow + dx, 1);
+					nh = MAX(oh + dy, 1);
+					nx = ocx;
+					ny = ocy;
+					break;
+				}
+
+				if (c->mon->wx + nw >= selmon->wx && c->mon->wx + nw <= selmon->wx + selmon->ww
+				&& c->mon->wy + nh >= selmon->wy && c->mon->wy + nh <= selmon->wy + selmon->wh)
+				{
+					if (!c->isfloating && selmon->lt[selmon->sellt]->arrange
+					&& (abs(nw - c->w) > snap || abs(nh - c->h) > snap))
+						togglefloating(NULL);
+				}
+				if (!selmon->lt[selmon->sellt]->arrange || c->isfloating)
+					resize(c, nx, ny, nw, nh, 1);
 			}
-			if (!selmon->lt[selmon->sellt]->arrange || c->isfloating)
-				resize(c, c->x, c->y, nw, nh, 1);
 			break;
 		}
 	} while (ev.type != ButtonRelease);
-	XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, c->w + c->bw - 1, c->h + c->bw - 1);
+
+	switch (corner) {
+	case 0:
+		XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, c->bw, c->bw);
+		break;
+	case 1:
+		XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, c->w + c->bw - 1, c->bw);
+		break;
+	case 2:
+		XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, c->bw, c->h + c->bw - 1);
+		break;
+	case 3:
+		XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, c->w + c->bw - 1, c->h + c->bw - 1);
+		break;
+	}
 	XUngrabPointer(dpy, CurrentTime);
 	while (XCheckMaskEvent(dpy, EnterWindowMask, &ev));
 	if ((m = recttomon(c->x, c->y, c->w, c->h)) != selmon) {
