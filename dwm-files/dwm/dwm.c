@@ -178,6 +178,7 @@ static void cleanup(void);
 static void cleanupmon(Monitor *mon);
 static void clientmessage(XEvent *e);
 static void swapclients(Client *c1, Client *c2);
+static void swaptomaster(const Arg *arg);
 static void configure(Client *c);
 static void configurenotify(XEvent *e);
 static void configurerequest(XEvent *e);
@@ -2701,6 +2702,22 @@ systraytomon(Monitor *m) {
 	if(systraypinningfailfirst && n < systraypinning)
 		return mons;
 	return t;
+}
+
+void
+swaptomaster(const Arg *arg)
+{
+	Client *c = selmon->sel;
+	Client *master;
+
+	if (!selmon->lt[selmon->sellt]->arrange || !c || c->isfloating)
+		return;
+	master = nexttiled(selmon->clients);
+	if (!master || c == master)
+		return;
+	swapclients(c, master);
+	arrange(selmon);
+	focus(c);
 }
 
 void
