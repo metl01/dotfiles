@@ -13,4 +13,4 @@ These files also include:
 
 - [dwm](https://dwm.suckless.org/) by the suckless community
 - [dmenu](https://tools.suckless.org/dmenu/) by the suckless community
-- dwmblocks for the status bar
+- [dwmblocks-async](https://github.com/UtkarshVerma/dwmblocks-async) for the status bar
