@@ -21,6 +21,8 @@
     X("", "$HOME/.local/bin/sb-clock.sh", 30, 0) \
     X("", "$HOME/.local/bin/sb-weather.sh", 1800, 0) \
     X("", "$HOME/.local/bin/sb-disk.sh", 1800, 0) \
+    X("", "$HOME/.local/bin/sb-memory.sh", 2, 0) \
+    X("", "$HOME/.local/bin/sb-cpu.sh", 2, 0) \
     X("", "$HOME/.local/bin/sb-temps.sh", 5, 0) \
     X("", "$HOME/.local/bin/sb-volume.sh", 0, 10) \
     X("", "$HOME/.local/bin/sb-battery.sh", 5, 0) \
