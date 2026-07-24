@@ -1,4 +1,4 @@
 export PATH="$HOME/.local/bin:$PATH"
-[ -f  $HOME/.fehbg ] && . $HOME/.fehbg &
-[ -f $HOME/.local/bin/autostart.sh ] && . $HOME/.local/bin/autostart.sh &
+[ -f  "$HOME/.fehbg" ] && "$HOME/.fehbg" &
+[ -f "$HOME/.local/bin/autostart.sh" ] && "$HOME/.local/bin/autostart.sh" &
 xss-lock -- slock &
