@@ -27,7 +27,7 @@ window {
     background-color: @bg;
     border: 2px;
     border-color: @accent;
-    border-radius: 8px;
+    border-radius: 0px;
     width: 600px;
     padding: 16px;
 }
@@ -39,7 +39,7 @@ mainbox {
 
 inputbar {
     background-color: @bg-alt;
-    border-radius: 6px;
+    border-radius: 0px;
     padding: 12px;
     spacing: 8px;
     children: [prompt, entry];
@@ -63,14 +63,14 @@ listview {
     spacing: 4px;
     cycle: false;
     dynamic: true;
-    scrollbar: true;
+    scrollbar: false;
     border: 0;
 }
 
 element {
     background-color: transparent;
     padding: 10px;
-    border-radius: 6px;
+    border-radius: 0px;
     spacing: 12px;
 }
 
@@ -101,7 +101,7 @@ element-text {
 }
 
 scrollbar {
-    border-radius: 10px;
+    border-radius: 0px;
     border-color: @bg-selected;
     background-color: @bg-alt;
     handle-width: 6px;
