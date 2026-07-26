@@ -1,3 +1,3 @@
 #!/bin/sh
-setsid dwmblocks &
+sleep 3 && setsid dwmblocks &
 setsid dunst &
