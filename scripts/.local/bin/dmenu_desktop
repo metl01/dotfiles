@@ -1,0 +1,28 @@
+#!/bin/sh
+cachedir="${XDG_CACHE_HOME:-"$HOME/.cache"}"
+desktopcache="$cachedir/dmenu_desktop"
+
+flatpakdirs="/var/lib/flatpak/exports/share/applications /home/$USER/.local/share/flatpak/exports/share/applications"
+
+if [ ! -f "$desktopcache" ] || [ "/usr/share/applications" -nt "$desktopcache" ] || [ "$HOME/.local/share/applications" -nt "$desktopcache" ] || for d in $flatpakdirs; do [ "$d" -nt "$desktopcache" ] 2>/dev/null && break; done; then
+    find /usr/share/applications ~/.local/share/applications $flatpakdirs \
+        -name '*.desktop' 2>/dev/null \
+    | while read -r f; do
+        grep -q 'NoDisplay=true' "$f" && continue
+        grep -q 'Hidden=true' "$f" && continue
+        name=$(grep '^Name=' "$f" | head -1 | sed 's/^Name=//')
+        exec=$(grep '^Exec=' "$f" | head -1 | sed 's/^Exec=//')
+        [ -n "$name" ] && [ -n "$exec" ] && printf '%s\t%s\n' "$name" "$exec"
+    done > "$desktopcache"
+fi
+
+selected=$(cut -f1 "$desktopcache" | dmenu -i "$@")
+
+[ -z "$selected" ] && exit
+
+if command -v "$selected" > /dev/null 2>&1; then
+    "$selected" &
+else
+    exec_cmd=$(grep "^${selected}	" "$desktopcache" | head -1 | cut -f2)
+    [ -n "$exec_cmd" ] && sh -c "$exec_cmd" &
+fi
