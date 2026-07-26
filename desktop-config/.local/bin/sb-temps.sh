@@ -2,23 +2,12 @@
 icon_cpu=$(printf '\uef2a')
 icon_gpu=$(printf '\U000f0379')
 
+#!/usr/bin/env bash
 # CPU temp
-cpu_temp=""
-if [ -f /sys/class/hwmon/hwmon3/temp1_input ]; then
-    cpu=$(cat /sys/class/hwmon/hwmon3/temp1_input 2>/dev/null)
-    [ -n "$cpu" ] && cpu_temp="$icon_cpu  $((cpu / 1000))°C"
-fi
+cpu_temp=$(sensors 2>/dev/null | grep -E 'Tdie|Tctl|Package id 0' | grep -oP '\+?[0-9]+\.\d+(?=°C)' | tr -d '+' | head -n1)
 
-# GPU temp
-gpu_temp=""
-gpu_path=$(echo /sys/class/drm/card*/device/hwmon/hwmon*/temp1_input 2>/dev/null)
-if [ -f "$gpu_path" ]; then
-    gpu=$(cat "$gpu_path" 2>/dev/null)
-    [ -n "$gpu" ] && gpu_temp="$icon_gpu  $((gpu / 1000))°C"
-fi
+# GPU temp (amdgpu) - use 'edge' for the general die temp, or 'junction' for hotspot
+gpu_temp=$(sensors 2>/dev/null | grep -A5 'amdgpu' | grep -E 'edge' | grep -oP '\+?[0-9]+\.\d+(?=°C)' | tr -d '+' | head -n1)
 
-# Output
-[ -n "$cpu_temp" ] && printf '%s' "$cpu_temp"
-[ -n "$cpu_temp" ] && [ -n "$gpu_temp" ] && printf '  '
-[ -n "$gpu_temp" ] && printf '%s' "$gpu_temp"
-echo
+echo "$icon_cpu  ${cpu_temp}°c  $icon_gpu  ${gpu_temp}°c"
+
