@@ -30,7 +30,8 @@ case "$status" in
         elif [ "$cap" -le 100 ]; then icon=$(printf '\U000f0079')
         fi
         ;;
-    Full) icon=$(printf '\U000f0079') ;;
+
+    'Not charging') icon=$(printf '\U000f0085') ;;
     *) icon="" ;;
 esac
 echo "$icon $cap%"
