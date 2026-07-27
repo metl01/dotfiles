@@ -1,5 +1,10 @@
 #!/bin/sh
 
+for i in 1 2 3 4 5; do
+    ping -c1 -W1 1.1.1.1 >/dev/null 2>&1 && break
+    sleep 2
+done
+
 data=$(curl -s "wttr.in/?format=%C|%t")
 
 condition=${data%|*}
