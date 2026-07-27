@@ -1,12 +1,23 @@
 #!/bin/bash
 icon=$(printf '\uf4bc')
-read -r _ a b c idle _rest < /proc/stat
-total1=$((a + b + c + idle))
-idle1=$idle
-sleep 1
-read -r _ d e f idle2 _rest < /proc/stat
-total2=$((d + e + f + idle2))
-idle2=$idle2
-total=$((total2 - total1))
-idle=$((idle2 - idle1))
-echo "$icon  $(( (total - idle) * 100 / total ))%"
+cache="${XDG_CACHE_HOME:-$HOME/.cache}/cpu_usage_prev"
+
+read -r _ user nice system idle iowait irq softirq steal _ < /proc/stat
+idle_all=$((idle + iowait))
+total=$((user + nice + system + idle_all + irq + softirq + steal))
+
+if [ -f "$cache" ]; then
+    read -r prev_total prev_idle < "$cache"
+    diff_total=$((total - prev_total))
+    diff_idle=$((idle_all - prev_idle))
+    if [ "$diff_total" -gt 0 ]; then
+        pct=$(( (diff_total - diff_idle) * 100 / diff_total ))
+    else
+        pct=0
+    fi
+else
+    pct=0
+fi
+
+printf '%s\n' "$total $idle_all" > "$cache"
+echo "$icon  ${pct}%"
