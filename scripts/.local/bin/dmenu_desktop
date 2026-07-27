@@ -11,7 +11,7 @@ if [ ! -f "$desktopcache" ] || [ "/usr/share/applications" -nt "$desktopcache" ]
         grep -q 'NoDisplay=true' "$f" && continue
         grep -q 'Hidden=true' "$f" && continue
         name=$(grep '^Name=' "$f" | head -1 | sed 's/^Name=//')
-        exec=$(grep '^Exec=' "$f" | head -1 | sed 's/^Exec=//')
+        exec=$(grep '^Exec=' "$f" | head -1 | sed 's/^Exec=//' | sed -E 's/ ?%[fFuUick]//g')
         [ -n "$name" ] && [ -n "$exec" ] && printf '%s\t%s\n' "$name" "$exec"
     done > "$desktopcache"
 fi
