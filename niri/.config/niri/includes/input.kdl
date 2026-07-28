@@ -37,6 +37,10 @@ input {
         // disabled-on-external-mouse
     }
 
+    touch{
+      off
+    }
+
     mouse {
         // off
         // natural-scroll
