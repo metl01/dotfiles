@@ -2,6 +2,7 @@
 /* appearance */
 #include <X11/Xutil.h>
 #include <X11/XF86keysym.h>
+
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 1;
@@ -38,9 +39,8 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-  { "steam",     NULL,       NULL,       1 << 0,      0,           0 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+  { "steam",    NULL,       NULL,       1 << 0,       0,            0 },
+  { "discord",  NULL,       NULL,       1 << 0,       0,            1 },
 };
 
 /* layout(s) */
